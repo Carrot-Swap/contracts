@@ -12,9 +12,6 @@ cache
 artifacts
 out
 
-yarn.lock
-package-lock.json
-
 secrets.json
 
 # Ignores development broadcast logs
