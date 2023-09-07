@@ -1,0 +1,5 @@
+# Ignore artifacts:
+/contracts/interfaces/*.sol
+/contracts/library/*.sol
+/contracts/proxy/**/*.sol
+/contracts/transparentProxy/**/*.sol
