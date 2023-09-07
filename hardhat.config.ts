@@ -1,5 +1,6 @@
 import { HardhatUserConfig } from "hardhat/config";
 
+import "hardhat-deploy";
 import "@openzeppelin/hardhat-upgrades";
 import "@nomiclabs/hardhat-waffle";
 import "@typechain/hardhat";
@@ -34,12 +35,16 @@ const config: HardhatUserConfig = {
         accountsBalance: "10000000000000000000000000",
       },
     },
-    neoevm: {
+    neo_evm: {
       url: "https://evm.ngd.network:32331",
       chainId: 2970385,
       accounts: require("./secrets.json").privateKey,
       gas: 30000001,
+      saveDeployments: true,
     },
+  },
+  namedAccounts: {
+    deployer: 0,
   },
 };
 

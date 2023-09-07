@@ -4,11 +4,11 @@
   "license": "MIT",
   "scripts": {
     "compile": "yarn hardhat compile",
-    "test": "yarn hardhat test --no-compile"
+    "deploy:neo:testnet": "yarn hardhat deploy --tags testnet --network neo_evm"
   },
   "devDependencies": {
     "@eth-optimism/smock": "^1.1.5",
-    "@nomiclabs/hardhat-ethers": "^2.2.2",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@openzeppelin/contracts": "^3.4.1",
     "@openzeppelin/contracts-upgradeable": "^3.4.1",
@@ -32,7 +32,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "ethereum-waffle": "^3.3.0",
     "ethers": "^5.7.2",
-    "hardhat": "^2.6.7",
+    "hardhat": "^2.9.3",
     "hardhat-abi-exporter": "^2.2.0",
     "hardhat-gas-reporter": "^1.0.4",
     "prettier": "^2.4.1",
@@ -56,6 +56,7 @@
     "fs-jetpack": "^5.0.0",
     "glob": "^7.2.0",
     "hardhat-contract-sizer": "^2.6.1",
+    "hardhat-deploy": "^0.9.27",
     "hardhat-interface-generator": "^0.0.6",
     "lodash": "^4.17.21",
     "mathjs": "^11.5.0",
