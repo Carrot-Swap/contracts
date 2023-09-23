@@ -99,6 +99,82 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@carrot-swap/multicall3@workspace:packages/multicall3":
+  version: 0.0.0-use.local
+  resolution: "@carrot-swap/multicall3@workspace:packages/multicall3"
+  dependencies:
+    "@nomicfoundation/hardhat-toolbox": ^2.0.2
+    "@nomiclabs/hardhat-ethers": ^2.2.3
+    "@nomiclabs/hardhat-waffle": ^2.0.1
+    "@openzeppelin/contracts": 3.4.2-solc-0.7
+    "@openzeppelin/contracts-upgradeable": 3.4.2-solc-0.7
+    "@openzeppelin/hardhat-upgrades": ^1.22.1
+    "@typechain/ethers-v5": ^7.2.0
+    "@typechain/hardhat": ^2.3.1
+    "@uniswap/lib": 4.0.1-alpha
+    base64-sol: 1.1.0
+    dotenv: ^16.0.3
+    hardhat: ^2.9.3
+    hardhat-abi-exporter: ^2.2.0
+    hardhat-contract-sizer: ^2.6.1
+    hardhat-deploy: ^0.9.27
+    hardhat-gas-reporter: ^1.0.4
+    hardhat-interface-generator: ^0.0.6
+    solidity-coverage: ^0.7.17
+    typechain: ^5.2.0
+  languageName: unknown
+  linkType: soft
+
+"@carrot-swap/uniswap-v2@workspace:packages/uniswap-v2":
+  version: 0.0.0-use.local
+  resolution: "@carrot-swap/uniswap-v2@workspace:packages/uniswap-v2"
+  dependencies:
+    "@eth-optimism/smock": ^1.1.5
+    "@makerdao/multicall": ^0.12.0
+    "@nomiclabs/hardhat-ethers": ^2.2.3
+    "@nomiclabs/hardhat-waffle": ^2.0.1
+    "@openzeppelin/contracts": ^3.4.1
+    "@openzeppelin/contracts-upgradeable": ^3.4.1
+    "@openzeppelin/hardhat-upgrades": ^1.9.0
+    "@typechain/ethers-v5": ^7.2.0
+    "@typechain/hardhat": ^2.3.1
+    "@types/chai": ^4.2.22
+    "@types/crypto-js": ^4.0.2
+    "@types/lodash": ^4.14.180
+    "@types/mocha": ^9.0.0
+    "@types/node": ^16.11.1
+    axios: ^0.26.0
+    chai: ^4.3.4
+    console-log-level: ^1.4.1
+    crypto-js: ^4.1.1
+    ethereum-waffle: ^3.3.0
+    ethereumjs-tx: ^2.1.2
+    ethers: ^5.7.2
+    express: ^4.17.2
+    fs-jetpack: ^5.0.0
+    glob: ^7.2.0
+    hardhat: ^2.9.3
+    hardhat-abi-exporter: ^2.2.0
+    hardhat-contract-sizer: ^2.6.1
+    hardhat-deploy: ^0.9.27
+    hardhat-gas-reporter: ^1.0.4
+    hardhat-interface-generator: ^0.0.6
+    lodash: ^4.17.21
+    prettier: ^2.4.1
+    prettier-plugin-solidity: ^1.0.0-beta.18
+    readline-sync: ^1.4.10
+    solc-0.8.3: "npm:solc@^0.8.3"
+    solhint: ^3.3.6
+    solidity-coverage: ^0.7.17
+    solidity-docgen: ^0.5.16
+    sync-fetch: ^0.3.1
+    ts-node: ^10.7.0
+    typechain: ^5.2.0
+    typedi: ^0.10.0
+    typescript: ^4.6.3
+  languageName: unknown
+  linkType: soft
+
 "@chainsafe/as-sha256@npm:^0.3.1":
   version: 0.3.1
   resolution: "@chainsafe/as-sha256@npm:0.3.1"
@@ -1076,6 +1152,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nomicfoundation/hardhat-toolbox@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "@nomicfoundation/hardhat-toolbox@npm:2.0.2"
+  peerDependencies:
+    "@ethersproject/abi": ^5.4.7
+    "@ethersproject/providers": ^5.4.7
+    "@nomicfoundation/hardhat-chai-matchers": ^1.0.0
+    "@nomicfoundation/hardhat-network-helpers": ^1.0.0
+    "@nomiclabs/hardhat-ethers": ^2.0.0
+    "@nomiclabs/hardhat-etherscan": ^3.0.0
+    "@typechain/ethers-v5": ^10.1.0
+    "@typechain/hardhat": ^6.1.2
+    "@types/chai": ^4.2.0
+    "@types/mocha": ">=9.1.0"
+    "@types/node": ">=12.0.0"
+    chai: ^4.2.0
+    ethers: ^5.4.7
+    hardhat: ^2.11.0
+    hardhat-gas-reporter: ^1.0.8
+    solidity-coverage: ^0.8.1
+    ts-node: ">=8.0.0"
+    typechain: ^8.1.0
+    typescript: ">=4.5.0"
+  checksum: a2eafb709acbabe40de4871c4e8684a03098f045dba4fc6c6e9281358d072f386a668488c109e2a36b8eade01dc4c4f9e8a76fa45c92591857c590c6e19f1ae7
+  languageName: node
+  linkType: hard
+
 "@nomicfoundation/solidity-analyzer-darwin-arm64@npm:0.1.1":
   version: 0.1.1
   resolution: "@nomicfoundation/solidity-analyzer-darwin-arm64@npm:0.1.1"
@@ -1391,10 +1494,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@openzeppelin/contracts-upgradeable@npm:3.4.2-solc-0.7":
+  version: 3.4.2-solc-0.7
+  resolution: "@openzeppelin/contracts-upgradeable@npm:3.4.2-solc-0.7"
+  checksum: 662d168ea1763faa5e168751043e4e041ccd810c3d4c781aa5aee0e9947e9f95d51edaeb1daaa4cc2860463beb961b576c6a3e60e3fbb6fa27188a611c8522e4
+  languageName: node
+  linkType: hard
+
 "@openzeppelin/contracts-upgradeable@npm:^3.4.1":
   version: 3.4.2
   resolution: "@openzeppelin/contracts-upgradeable@npm:3.4.2"
   checksum: dd461cdc8353ee6219e746fa71eced068df46c6df4bfe29207a8ad35064b476c2aa532ec0026c505d9515857ada5838c445b2433e2dadc0878fc678046c4e8b0
+  languageName: node
+  linkType: hard
+
+"@openzeppelin/contracts@npm:3.4.2-solc-0.7":
+  version: 3.4.2-solc-0.7
+  resolution: "@openzeppelin/contracts@npm:3.4.2-solc-0.7"
+  checksum: 1a6048f31ed560c34429a05e534102c51124ecaf113aca7ebeb7897cfaaf61007cdd7952374c282adaeb79b04ee86ee80b16eed28b62fc6d60e3ffcd7a696895
   languageName: node
   linkType: hard
 
@@ -1418,7 +1535,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@openzeppelin/hardhat-upgrades@npm:^1.9.0":
+"@openzeppelin/hardhat-upgrades@npm:^1.22.1, @openzeppelin/hardhat-upgrades@npm:^1.9.0":
   version: 1.28.0
   resolution: "@openzeppelin/hardhat-upgrades@npm:1.28.0"
   dependencies:
@@ -2249,6 +2366,13 @@ __metadata:
     "@typescript-eslint/types": 4.33.0
     eslint-visitor-keys: ^2.0.0
   checksum: 59953e474ad4610c1aa23b2b1a964445e2c6201521da6367752f37939d854352bbfced5c04ea539274065e012b1337ba3ffa49c2647a240a4e87155378ba9873
+  languageName: node
+  linkType: hard
+
+"@uniswap/lib@npm:4.0.1-alpha":
+  version: 4.0.1-alpha
+  resolution: "@uniswap/lib@npm:4.0.1-alpha"
+  checksum: d7bbacccef40966af16c7e215ab085f575686d316b2802c9e1cfd03f7ad351970e547535670a28b2279c3cfcc4fb02888614c46f94efe2987af2309f3ec86127
   languageName: node
   linkType: hard
 
@@ -3717,6 +3841,13 @@ __metadata:
   version: 1.5.1
   resolution: "base64-js@npm:1.5.1"
   checksum: 669632eb3745404c2f822a18fc3a0122d2f9a7a13f7fb8b5823ee19d1d2ff9ee5b52c53367176ea4ad093c332fd5ab4bd0ebae5a8e27917a4105a4cfc86b1005
+  languageName: node
+  linkType: hard
+
+"base64-sol@npm:1.1.0":
+  version: 1.1.0
+  resolution: "base64-sol@npm:1.1.0"
+  checksum: 9bea828af71e6adcf7c841cf0001e03bd1eae8cc1aef86daedb36f04117b2a626ac23631f700d56a24515f88c2021d7ebdbee4608369f66c53e51c0b4b39ee47
   languageName: node
   linkType: hard
 
@@ -5510,6 +5641,13 @@ __metadata:
   version: 10.0.0
   resolution: "dotenv@npm:10.0.0"
   checksum: f412c5fe8c24fbe313d302d2500e247ba8a1946492db405a4de4d30dd0eb186a88a43f13c958c5a7de303938949c4231c56994f97d05c4bc1f22478d631b4005
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^16.0.3":
+  version: 16.3.1
+  resolution: "dotenv@npm:16.3.1"
+  checksum: 15d75e7279018f4bafd0ee9706593dd14455ddb71b3bcba9c52574460b7ccaf67d5cf8b2c08a5af1a9da6db36c956a04a1192b101ee102a3e0cf8817bbcf3dfd
   languageName: node
   linkType: hard
 
@@ -14811,56 +14949,6 @@ __metadata:
   checksum: 0884b58365af59f89739e6f71e3feacb5b1b41f2df2d842d0757933620e6de08eff347d27e9d499b43c40476cbaf7988638d3acb2ffbcb9d35fd035591adfd15
   languageName: node
   linkType: hard
-
-"uniswap-v2@workspace:packages/uniswap-v2":
-  version: 0.0.0-use.local
-  resolution: "uniswap-v2@workspace:packages/uniswap-v2"
-  dependencies:
-    "@eth-optimism/smock": ^1.1.5
-    "@makerdao/multicall": ^0.12.0
-    "@nomiclabs/hardhat-ethers": ^2.2.3
-    "@nomiclabs/hardhat-waffle": ^2.0.1
-    "@openzeppelin/contracts": ^3.4.1
-    "@openzeppelin/contracts-upgradeable": ^3.4.1
-    "@openzeppelin/hardhat-upgrades": ^1.9.0
-    "@typechain/ethers-v5": ^7.2.0
-    "@typechain/hardhat": ^2.3.1
-    "@types/chai": ^4.2.22
-    "@types/crypto-js": ^4.0.2
-    "@types/lodash": ^4.14.180
-    "@types/mocha": ^9.0.0
-    "@types/node": ^16.11.1
-    axios: ^0.26.0
-    chai: ^4.3.4
-    console-log-level: ^1.4.1
-    crypto-js: ^4.1.1
-    ethereum-waffle: ^3.3.0
-    ethereumjs-tx: ^2.1.2
-    ethers: ^5.7.2
-    express: ^4.17.2
-    fs-jetpack: ^5.0.0
-    glob: ^7.2.0
-    hardhat: ^2.9.3
-    hardhat-abi-exporter: ^2.2.0
-    hardhat-contract-sizer: ^2.6.1
-    hardhat-deploy: ^0.9.27
-    hardhat-gas-reporter: ^1.0.4
-    hardhat-interface-generator: ^0.0.6
-    lodash: ^4.17.21
-    prettier: ^2.4.1
-    prettier-plugin-solidity: ^1.0.0-beta.18
-    readline-sync: ^1.4.10
-    solc-0.8.3: "npm:solc@^0.8.3"
-    solhint: ^3.3.6
-    solidity-coverage: ^0.7.17
-    solidity-docgen: ^0.5.16
-    sync-fetch: ^0.3.1
-    ts-node: ^10.7.0
-    typechain: ^5.2.0
-    typedi: ^0.10.0
-    typescript: ^4.6.3
-  languageName: unknown
-  linkType: soft
 
 "universalify@npm:^0.1.0":
   version: 0.1.2
