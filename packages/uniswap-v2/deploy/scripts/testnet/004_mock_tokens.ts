@@ -1,18 +1,29 @@
+import { BigNumber, Contract } from "ethers";
 import { DeployFunction } from "hardhat-deploy/types";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { toUnit } from "../../utils/formatter";
+import { MOCK_TOKENS, PAIRS, Token } from "../../utils/MOCK_TOKENS";
 import { MaxUINT, ZeroAddress } from "../../utils/constants";
-import { currentTime } from "../../utils/currentTime";
-import { MOCK_TOKENS, PAIRS } from "../../utils/MOCK_TOKENS";
+import { toUnit } from "../../utils/formatter";
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { ethers, deployments, getNamedAccounts } = hre;
   const { deployer } = await getNamedAccounts();
   const signer = await ethers.getSigner(deployer);
 
-  const tokenDeployments = {};
+  const tokenDeployments: Record<string, Token & { contract: Contract }> = {};
   for (const [symbol, item] of Object.entries(MOCK_TOKENS)) {
-    tokenDeployments[symbol] = await deployToken(hre, deployer, item);
+    if (!item.isNative) {
+      const contract = await deployToken(hre, deployer, item);
+      tokenDeployments[symbol] = { ...item, contract };
+      continue;
+    }
+    const deployment = await deployments.get("WETH9");
+    const contract = new ethers.Contract(
+      deployment.address,
+      deployment.abi,
+      signer
+    );
+    tokenDeployments[symbol] = { ...item, contract };
   }
 
   const router = await deployments.get("UniswapV2Router02");
@@ -29,51 +40,76 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   );
 
   for (const pair of PAIRS) {
-    const token1 = tokenDeployments[pair.token1.symbol];
-    const token2 = tokenDeployments[pair.token2.symbol];
-    const token1Address = token1.address;
-    const token2Address = token2.address;
+    const token1 = {
+      ...tokenDeployments[pair.token1.symbol],
+      amount: pair.token1.amount,
+    };
+    const token2 = {
+      ...tokenDeployments[pair.token2.symbol],
+      amount: pair.token2.amount,
+    };
     const pairAddress1 = await factoryContract.getPair(
-      token1Address,
-      token2Address
+      token1.contract.address,
+      token2.contract.address
     );
-    if (pairAddress1 != ZeroAddress) {
+
+    if (pairAddress1 === ZeroAddress) {
+      await factoryContract.createPair(
+        token1.contract.address,
+        token2.contract.address
+      );
+      await token1.contract.approve(router.address, MaxUINT);
+      await token2.contract.approve(router.address, MaxUINT);
+    }
+    const pairAddress2 = await factoryContract.getPair(
+      token1.contract.address,
+      token2.contract.address
+    );
+
+    const pairArtifact = await deployments.getArtifact("UniswapV2Pair");
+    const pairContract = new ethers.Contract(
+      pairAddress2,
+      pairArtifact.abi,
+      signer
+    );
+    const totalSupply = await pairContract.totalSupply();
+    if (BigNumber.from(totalSupply).gt(0)) {
       console.log(
-        `${pair.token1.symbol}-${pair.token2.symbol} pair deployed(${pairAddress1})`
+        `${pair.token1.symbol}-${pair.token2.symbol} pair deployed(${pairAddress2})`
       );
       continue;
     }
-    const token1Amount = toUnit(
-      pair.token1.amount,
-      MOCK_TOKENS[pair.token1.symbol].decimals
-    );
-    const token2Amount = toUnit(
-      pair.token2.amount,
-      MOCK_TOKENS[pair.token2.symbol].decimals
-    );
 
-    await factoryContract.createPair(token2Address, token1Address);
+    const deadline =
+      (await ethers.provider.getBlock("latest")).timestamp + 1000;
 
-    await token1.approve(router.address, MaxUINT);
-    await token2.approve(router.address, MaxUINT);
-
-    await routerContract.addLiquidity(
-      token1Address,
-      token2Address,
-      token1Amount,
-      token2Amount,
-      0,
-      0,
-      deployer,
-      (await ethers.provider.getBlock("latest")).timestamp + 1000
-    );
-    const pairAddress2 = await factoryContract.getPair(
-      token1Address,
-      token2Address
-    );
-    console.log(
-      `${pair.token1.symbol}-${pair.token2.symbol} pair deployed(${pairAddress2})`
-    );
+    if (!token1.isNative && !token2.isNative) {
+      await routerContract.addLiquidity(
+        token1.contract.address,
+        token2.contract.address,
+        token1.amount,
+        token2.amount,
+        0,
+        0,
+        deployer,
+        deadline
+      );
+    } else {
+      const [native, other] = token1.isNative
+        ? [token1, token2]
+        : [token2, token1];
+      await routerContract.addLiquidityETH(
+        other.contract.address,
+        other.amount,
+        0,
+        0,
+        deployer,
+        deadline,
+        {
+          value: native.amount,
+        }
+      );
+    }
   }
 };
 
