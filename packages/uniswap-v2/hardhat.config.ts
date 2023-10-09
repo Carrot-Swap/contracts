@@ -25,16 +25,6 @@ const config: HardhatUserConfig = {
     ],
   },
   networks: {
-    hardhat: {
-      forking: {
-        url: "https://evm.ngd.network:32331", // testnet node
-      },
-      accounts: {
-        mnemonic: "test test test test test test test test test test test junk",
-        initialIndex: 0,
-        accountsBalance: "10000000000000000000000000",
-      },
-    },
     neo_evm: {
       url: "https://evm.ngd.network:32331",
       chainId: 2970385,
