@@ -1,9 +1,5 @@
-export type Token = {
-  name: string;
-  symbol: string;
-  decimals: number;
-  isNative?: boolean;
-};
+import { Token } from "./Token";
+
 export const MOCK_TOKENS: Record<string, Token> = {
   WBTC: {
     name: "Wrapped Bitcoin",

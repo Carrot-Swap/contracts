@@ -1,7 +1,8 @@
 import { BigNumber, Contract } from "ethers";
 import { DeployFunction } from "hardhat-deploy/types";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { MOCK_TOKENS, PAIRS, Token } from "../../utils/MOCK_TOKENS";
+import { PAIRS, TOKENS } from "../../constants";
+import { Token } from "../../constants/mock-tokens/Token";
 import { MaxUINT, ZeroAddress } from "../../utils/constants";
 import { toUnit } from "../../utils/formatter";
 
@@ -10,10 +11,13 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await getNamedAccounts();
   const signer = await ethers.getSigner(deployer);
 
+  const mockTokens = TOKENS[hre.network.name];
+  const pairs = PAIRS[hre.network.name];
+
   const tokenDeployments: Record<string, Token & { contract: Contract }> = {};
-  for (const [symbol, item] of Object.entries(MOCK_TOKENS)) {
+  for (const [symbol, item] of Object.entries(mockTokens)) {
     if (!item.isNative) {
-      const contract = await deployToken(hre, deployer, item);
+      const contract = await deployToken(hre, deployer, symbol, item);
       tokenDeployments[symbol] = { ...item, contract };
       continue;
     }
@@ -39,7 +43,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     signer
   );
 
-  for (const pair of PAIRS) {
+  for (const pair of pairs) {
     const token1 = {
       ...tokenDeployments[pair.token1.symbol],
       amount: pair.token1.amount,
@@ -120,19 +124,21 @@ export default func;
 async function deployToken(
   hre: HardhatRuntimeEnvironment,
   deployer: string,
+  contractName: string,
   { name, symbol, decimals }: { name: string; symbol: string; decimals: number }
 ) {
   const { ethers, deployments } = hre;
   const { deploy } = deployments;
   const signer = await ethers.getSigner(deployer);
 
-  const token = await deploy(symbol.toUpperCase(), {
+  const token = await deploy(contractName, {
     from: deployer,
     args: [name, symbol, decimals],
   });
   console.log(`${symbol} token is deployed(${token.address})`);
   const tokenContract = new ethers.Contract(token.address, token.abi, signer);
 
+  console.log(tokenContract.address, "totalSupply");
   const totalSupply = await tokenContract.totalSupply();
   if (totalSupply == 0) {
     const receipt = await tokenContract.mint(deployer, toUnit(100000000));

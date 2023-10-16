@@ -32,6 +32,11 @@ const config: HardhatUserConfig = {
       gas: 30000001,
       saveDeployments: true,
     },
+    zeta_athens: {
+      url: "https://zetachain-athens-evm.blockpi.network/v1/rpc/public",
+      chainId: 7001,
+      accounts: require("./secrets.json").privateKey,
+    },
   },
   namedAccounts: {
     deployer: 0,
