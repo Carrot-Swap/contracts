@@ -252,7 +252,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeConnector/CarrotBridgeConnector.csproj",
-      "projectName": "Carrot.Bridge",
+      "projectName": "CarrotBridgeConnector",
       "projectPath": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeConnector/CarrotBridgeConnector.csproj",
       "packagesPath": "/Users/boxfox/.nuget/packages/",
       "outputPath": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeConnector/obj/",

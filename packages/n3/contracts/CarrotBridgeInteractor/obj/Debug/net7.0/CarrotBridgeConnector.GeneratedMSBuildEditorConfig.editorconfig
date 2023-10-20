@@ -7,5 +7,5 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
-build_property.RootNamespace = CarrotBridgeConnector
-build_property.ProjectDir = /Users/boxfox/Desktop/projects/pepper-contracts/packages/bridge/n3/contracts/CarrotBridgeConnector/
+build_property.RootNamespace = Carrot.Bridge
+build_property.ProjectDir = /Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeConnector/

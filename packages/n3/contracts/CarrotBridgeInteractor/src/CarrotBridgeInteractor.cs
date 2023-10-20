@@ -13,11 +13,6 @@ using static Neo.SmartContract.Framework.ExecutionEngine;
 
 namespace Carrot.Bridge
 {
-  [DisplayName("CarrotBridgeInteractor")]
-  [ManifestExtra("Author", "Carrot Swap")]
-  [ManifestExtra("Description", "Carrot Swap Bridge contract")]
-  [SupportedStandards("NEP17", "NEP10")]
-  [ContractPermission("*", "*")]
   public abstract partial class CarrotBridgeInteractor : SmartContract
   {
 
