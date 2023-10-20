@@ -25,12 +25,17 @@ const config: HardhatUserConfig = {
     ],
   },
   networks: {
-    neo_evm: {
+    neo_testnet: {
       url: "https://evm.ngd.network:32331",
       chainId: 2970385,
       accounts: require("./secrets.json").privateKey,
       gas: 30000001,
       saveDeployments: true,
+    },
+    zeta_athens: {
+      url: "https://zetachain-athens-evm.blockpi.network/v1/rpc/public",
+      chainId: 7001,
+      accounts: require("./secrets.json").privateKey,
     },
   },
   namedAccounts: {
