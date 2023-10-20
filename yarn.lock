@@ -125,32 +125,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@carrot-swap/monery-market@workspace:packages/money-market":
-  version: 0.0.0-use.local
-  resolution: "@carrot-swap/monery-market@workspace:packages/money-market"
-  dependencies:
-    "@nomicfoundation/hardhat-toolbox": ^2.0.2
-    "@nomiclabs/hardhat-ethers": ^2.2.3
-    "@nomiclabs/hardhat-waffle": ^2.0.1
-    "@openzeppelin/contracts": 3.4.2-solc-0.7
-    "@openzeppelin/contracts-upgradeable": 3.4.2-solc-0.7
-    "@openzeppelin/hardhat-upgrades": ^1.22.1
-    "@typechain/ethers-v5": ^7.2.0
-    "@typechain/hardhat": ^2.3.1
-    "@uniswap/lib": 4.0.1-alpha
-    base64-sol: 1.1.0
-    dotenv: ^16.0.3
-    hardhat: ^2.9.3
-    hardhat-abi-exporter: ^2.2.0
-    hardhat-contract-sizer: ^2.6.1
-    hardhat-deploy: ^0.9.27
-    hardhat-gas-reporter: ^1.0.4
-    hardhat-interface-generator: ^0.0.6
-    solidity-coverage: ^0.7.17
-    typechain: ^5.2.0
-  languageName: unknown
-  linkType: soft
-
 "@carrot-swap/multicall3@workspace:packages/multicall3":
   version: 0.0.0-use.local
   resolution: "@carrot-swap/multicall3@workspace:packages/multicall3"
@@ -174,6 +148,56 @@ __metadata:
     hardhat-interface-generator: ^0.0.6
     solidity-coverage: ^0.7.17
     typechain: ^5.2.0
+  languageName: unknown
+  linkType: soft
+
+"@carrot-swap/testnet@workspace:packages/testnet":
+  version: 0.0.0-use.local
+  resolution: "@carrot-swap/testnet@workspace:packages/testnet"
+  dependencies:
+    "@eth-optimism/smock": ^1.1.5
+    "@makerdao/multicall": ^0.12.0
+    "@nomiclabs/hardhat-ethers": ^2.2.3
+    "@nomiclabs/hardhat-waffle": ^2.0.1
+    "@openzeppelin/contracts": ^3.4.1
+    "@openzeppelin/contracts-upgradeable": ^3.4.1
+    "@openzeppelin/hardhat-upgrades": ^1.9.0
+    "@typechain/ethers-v5": ^7.2.0
+    "@typechain/hardhat": ^2.3.1
+    "@types/chai": ^4.2.22
+    "@types/crypto-js": ^4.0.2
+    "@types/lodash": ^4.14.180
+    "@types/mocha": ^9.0.0
+    "@types/node": ^16.11.1
+    axios: ^0.26.0
+    chai: ^4.3.4
+    console-log-level: ^1.4.1
+    crypto-js: ^4.1.1
+    ethereum-waffle: ^3.3.0
+    ethereumjs-tx: ^2.1.2
+    ethers: ^5.7.2
+    express: ^4.17.2
+    fs-jetpack: ^5.0.0
+    glob: ^7.2.0
+    hardhat: ^2.9.3
+    hardhat-abi-exporter: ^2.2.0
+    hardhat-contract-sizer: ^2.6.1
+    hardhat-deploy: ^0.9.27
+    hardhat-gas-reporter: ^1.0.4
+    hardhat-interface-generator: ^0.0.6
+    lodash: ^4.17.21
+    prettier: ^2.4.1
+    prettier-plugin-solidity: ^1.0.0-beta.18
+    readline-sync: ^1.4.10
+    solc-0.8.3: "npm:solc@^0.8.3"
+    solhint: ^3.3.6
+    solidity-coverage: ^0.7.17
+    solidity-docgen: ^0.5.16
+    sync-fetch: ^0.3.1
+    ts-node: ^10.7.0
+    typechain: ^5.2.0
+    typedi: ^0.10.0
+    typescript: ^4.6.3
   languageName: unknown
   linkType: soft
 

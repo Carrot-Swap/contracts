@@ -1,19 +1,11 @@
-import { HardhatUserConfig } from "hardhat/config";
-import "hardhat-deploy";
-import "@openzeppelin/hardhat-upgrades";
-import "@nomiclabs/hardhat-waffle";
-import "@typechain/hardhat";
-import "hardhat-gas-reporter";
-import "solidity-coverage";
-import "@nomiclabs/hardhat-ethers";
 import dotenv from "dotenv";
 dotenv.config();
 
-const config: HardhatUserConfig = {
+export const hardhatBaseConfig = {
   solidity: {
     compilers: [
       {
-        version: "0.8.12",
+        version: "0.8.9",
         settings: {
           optimizer: {
             enabled: true,
@@ -36,10 +28,23 @@ const config: HardhatUserConfig = {
       chainId: 7001,
       accounts: require("./secrets.json").privateKey,
     },
+    polygon_mumbai: {
+      url: "https://polygon-mumbai-bor.publicnode.com",
+      chainId: 80001,
+      accounts: require("./secrets.json").privateKey,
+    },
+    eth_goril: {
+      url: "https://ethereum-goerli.publicnode.com",
+      chainId: 5,
+      accounts: require("./secrets.json").privateKey,
+    },
+    bnb_testnet: {
+      url: "https://bsc-testnet.publicnode.com",
+      chainId: 97,
+      accounts: require("./secrets.json").privateKey,
+    },
   },
   namedAccounts: {
     deployer: 0,
   },
 };
-
-export default config;

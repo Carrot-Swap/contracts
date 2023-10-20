@@ -1,4 +1,5 @@
 import { HardhatUserConfig } from "hardhat/config";
+
 import "hardhat-deploy";
 import "@openzeppelin/hardhat-upgrades";
 import "@nomiclabs/hardhat-waffle";
@@ -8,8 +9,10 @@ import "solidity-coverage";
 import "@nomiclabs/hardhat-ethers";
 import { hardhatBaseConfig } from "../../hardhat.config.base";
 
+require("hardhat-contract-sizer");
+
 const config: HardhatUserConfig = {
-  ...hardhatBaseConfig,
+  ...hardhatBaseConfig
 };
 
 export default config;

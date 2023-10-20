@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.6.12;
 
-import "../libraries/SafeMath.sol";
-import "./ITestERC20.sol";
+import "./libraries/SafeMath.sol";
+import "./interfaces/ITestERC20.sol";
 
 contract TestERC20 is ITestERC20 {
     using SafeMathUniswap for uint256;
 
-    mapping (address => uint256) private _balances;
-    mapping (address => mapping (address => uint256)) private _allowances;
+    mapping(address => uint256) private _balances;
+    mapping(address => mapping(address => uint256)) private _allowances;
 
     uint256 private _totalSupply;
 
@@ -56,7 +56,11 @@ contract TestERC20 is ITestERC20 {
         return true;
     }
 
-    function transferFrom(address sender, address recipient, uint256 amount) public override returns (bool) {
+    function transferFrom(
+        address sender,
+        address recipient,
+        uint256 amount
+    ) public override returns (bool) {
         _transfer(sender, recipient, amount);
         _approve(sender, _msgSender(), _allowances[sender][_msgSender()].sub(amount));
         return true;
@@ -110,5 +114,4 @@ contract TestERC20 is ITestERC20 {
     function _setupDecimals(uint8 decimals_) private {
         _decimals = decimals_;
     }
-
 }

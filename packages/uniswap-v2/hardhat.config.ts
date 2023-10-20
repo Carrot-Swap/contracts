@@ -25,7 +25,7 @@ const config: HardhatUserConfig = {
     ],
   },
   networks: {
-    neo_evm: {
+    neo_testnet: {
       url: "https://evm.ngd.network:32331",
       chainId: 2970385,
       accounts: require("./secrets.json").privateKey,
