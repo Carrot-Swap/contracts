@@ -7,7 +7,7 @@ import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
 import "@nomiclabs/hardhat-ethers";
-import { hardhatBaseConfig } from "../../hardhat.config.base";
+import { hardhatBaseConfig } from "../../../hardhat.config.base";
 
 require("hardhat-contract-sizer");
 

@@ -99,9 +99,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@carrot-swap/bridge-evm@workspace:packages/bridge/evm":
+"@carrot-swap/bridge-evm@workspace:packages/evm/bridge":
   version: 0.0.0-use.local
-  resolution: "@carrot-swap/bridge-evm@workspace:packages/bridge/evm"
+  resolution: "@carrot-swap/bridge-evm@workspace:packages/evm/bridge"
   dependencies:
     "@nomicfoundation/hardhat-toolbox": ^2.0.2
     "@nomiclabs/hardhat-ethers": ^2.2.3
@@ -125,9 +125,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@carrot-swap/faucet@workspace:packages/faucet":
+"@carrot-swap/faucet@workspace:packages/evm/faucet":
   version: 0.0.0-use.local
-  resolution: "@carrot-swap/faucet@workspace:packages/faucet"
+  resolution: "@carrot-swap/faucet@workspace:packages/evm/faucet"
   dependencies:
     "@nomicfoundation/hardhat-toolbox": ^2.0.2
     "@nomiclabs/hardhat-ethers": ^2.2.3
@@ -151,9 +151,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@carrot-swap/multicall3@workspace:packages/multicall3":
+"@carrot-swap/multicall3@workspace:packages/evm/multicall3":
   version: 0.0.0-use.local
-  resolution: "@carrot-swap/multicall3@workspace:packages/multicall3"
+  resolution: "@carrot-swap/multicall3@workspace:packages/evm/multicall3"
   dependencies:
     "@nomicfoundation/hardhat-toolbox": ^2.0.2
     "@nomiclabs/hardhat-ethers": ^2.2.3
@@ -177,9 +177,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@carrot-swap/testnet@workspace:packages/testnet":
+"@carrot-swap/testnet@workspace:packages/evm/testnet":
   version: 0.0.0-use.local
-  resolution: "@carrot-swap/testnet@workspace:packages/testnet"
+  resolution: "@carrot-swap/testnet@workspace:packages/evm/testnet"
   dependencies:
     "@eth-optimism/smock": ^1.1.5
     "@makerdao/multicall": ^0.12.0
@@ -227,9 +227,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@carrot-swap/uniswap-v2@workspace:packages/uniswap-v2":
+"@carrot-swap/uniswap-v2@workspace:packages/evm/uniswap-v2":
   version: 0.0.0-use.local
-  resolution: "@carrot-swap/uniswap-v2@workspace:packages/uniswap-v2"
+  resolution: "@carrot-swap/uniswap-v2@workspace:packages/evm/uniswap-v2"
   dependencies:
     "@eth-optimism/smock": ^1.1.5
     "@makerdao/multicall": ^0.12.0
@@ -277,9 +277,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@carrpt-swap/bridge-n3@workspace:packages/bridge/n3":
+"@carrpt-swap/bridge-n3@workspace:packages/n3":
   version: 0.0.0-use.local
-  resolution: "@carrpt-swap/bridge-n3@workspace:packages/bridge/n3"
+  resolution: "@carrpt-swap/bridge-n3@workspace:packages/n3"
   dependencies:
     "@cityofzion/neon-api": 5.2.2
     "@cityofzion/neon-core": 5.3.0

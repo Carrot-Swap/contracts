@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/boxfox/Desktop/projects/pepper-contracts/packages/bridge/n3/contracts/CarrotBridgeConnector/CarrotBridgeConnector.csproj": {}
+    "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeConnector/CarrotBridgeConnector.csproj": {}
   },
   "projects": {
-    "/Users/boxfox/Desktop/projects/pepper-contracts/packages/bridge/n3/contracts/CarrotBridgeConnector/CarrotBridgeConnector.csproj": {
+    "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeConnector/CarrotBridgeConnector.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/bridge/n3/contracts/CarrotBridgeConnector/CarrotBridgeConnector.csproj",
+        "projectUniqueName": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeConnector/CarrotBridgeConnector.csproj",
         "projectName": "Carrot.Bridge",
-        "projectPath": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/bridge/n3/contracts/CarrotBridgeConnector/CarrotBridgeConnector.csproj",
+        "projectPath": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeConnector/CarrotBridgeConnector.csproj",
         "packagesPath": "/Users/boxfox/.nuget/packages/",
-        "outputPath": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/bridge/n3/contracts/CarrotBridgeConnector/obj/",
+        "outputPath": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeConnector/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/boxfox/Desktop/projects/pepper-contracts/packages/bridge/n3/NuGet.Config",
+          "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/NuGet.Config",
           "/Users/boxfox/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
