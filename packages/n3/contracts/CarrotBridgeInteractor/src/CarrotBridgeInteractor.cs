@@ -67,10 +67,16 @@ namespace Carrot.Bridge
       interactorsByChainIdStorage.getStorage().Put(destinationChainId, (UInt160)contractAddress);
     }
 
-    private static string keccak256(byte[] data)
+    protected static void sendBridgeMessage(
+        UInt160 txOriginAddress,
+        UInt160 txSenderAddress,
+        UInt256 destinationChainId,
+        byte[] destinationAddress,
+        UInt256 destinationGasLimit,
+        byte[] message,
+        byte[] bridgeParams)
     {
-      return "";
-
+      Contract.Call(connectorAddress(), "send", CallFlags.All, new object { txOriginAddress, txSenderAddress, destinationChainId, destinationAddress, destinationGasLimit, message, bridgeParams });
     }
 
 

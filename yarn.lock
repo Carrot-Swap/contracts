@@ -282,10 +282,10 @@ __metadata:
   resolution: "@carrpt-swap/bridge-n3@workspace:packages/n3"
   dependencies:
     "@cityofzion/neon-api": 5.2.2
-    "@cityofzion/neon-core": 5.3.0
+    "@cityofzion/neon-core": ^5.5.1
     "@cityofzion/neon-js": 5.3.0
     "@types/node": ^18.11.15
-    dotenv: ^16.0.3
+    dotenv: ^16.3.1
     ts-node: ^10.9.1
     typescript: ^4.9.4
   languageName: unknown
@@ -355,26 +355,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cityofzion/neon-core@npm:5.3.0":
-  version: 5.3.0
-  resolution: "@cityofzion/neon-core@npm:5.3.0"
-  dependencies:
-    abort-controller: 3.0.0
-    bn.js: 5.2.0
-    bs58: 5.0.0
-    buffer: 6.0.3
-    cross-fetch: ^3.1.5
-    crypto-js: 4.1.1
-    elliptic: 6.5.4
-    lodash: 4.17.21
-    loglevel: 1.8.0
-    loglevel-plugin-prefix: 0.8.4
-    scrypt-js: 3.0.1
-  checksum: 6e7e27e67c11b1742993b5b95ae485df75fcf4e79364dd9bde1daa122c727983ea3bae33da2881d96affdc0850bc988388b1b4d1adce1a5b2e303061776e54b2
-  languageName: node
-  linkType: hard
-
-"@cityofzion/neon-core@npm:^5.3.0":
+"@cityofzion/neon-core@npm:^5.3.0, @cityofzion/neon-core@npm:^5.5.1":
   version: 5.5.1
   resolution: "@cityofzion/neon-core@npm:5.5.1"
   dependencies:
@@ -2633,15 +2614,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"abort-controller@npm:3.0.0":
-  version: 3.0.0
-  resolution: "abort-controller@npm:3.0.0"
-  dependencies:
-    event-target-shim: ^5.0.0
-  checksum: 170bdba9b47b7e65906a28c8ce4f38a7a369d78e2271706f020849c1bfe0ee2067d4261df8bbb66eb84f79208fd5b710df759d64191db58cfba7ce8ef9c54b75
-  languageName: node
-  linkType: hard
-
 "abortcontroller-polyfill@npm:^1.7.3":
   version: 1.7.5
   resolution: "abortcontroller-polyfill@npm:1.7.5"
@@ -4191,13 +4163,6 @@ __metadata:
   version: 4.11.6
   resolution: "bn.js@npm:4.11.6"
   checksum: db23047bf06fdf9cf74401c8e76bca9f55313c81df382247d2c753868b368562e69171716b81b7038ada8860af18346fd4bcd1cf9d4963f923fe8e54e61cb58a
-  languageName: node
-  linkType: hard
-
-"bn.js@npm:5.2.0":
-  version: 5.2.0
-  resolution: "bn.js@npm:5.2.0"
-  checksum: 6117170393200f68b35a061ecbf55d01dd989302e7b3c798a3012354fa638d124f0b2f79e63f77be5556be80322a09c40339eda6413ba7468524c0b6d4b4cb7a
   languageName: node
   linkType: hard
 
@@ -5901,7 +5866,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.0.3":
+"dotenv@npm:^16.0.3, dotenv@npm:^16.3.1":
   version: 16.3.1
   resolution: "dotenv@npm:16.3.1"
   checksum: 15d75e7279018f4bafd0ee9706593dd14455ddb71b3bcba9c52574460b7ccaf67d5cf8b2c08a5af1a9da6db36c956a04a1192b101ee102a3e0cf8817bbcf3dfd
@@ -7192,13 +7157,6 @@ __metadata:
     is-hex-prefixed: 1.0.0
     strip-hex-prefix: 1.0.0
   checksum: 1f42959e78ec6f49889c49c8a98639e06f52a15966387dd39faf2930db48663d026efb7db2702dcffe7f2a99c4a0144b7ce784efdbf733f4077aae95de76d65f
-  languageName: node
-  linkType: hard
-
-"event-target-shim@npm:^5.0.0":
-  version: 5.0.1
-  resolution: "event-target-shim@npm:5.0.1"
-  checksum: 1ffe3bb22a6d51bdeb6bf6f7cf97d2ff4a74b017ad12284cc9e6a279e727dc30a5de6bb613e5596ff4dc3e517841339ad09a7eec44266eccb1aa201a30448166
   languageName: node
   linkType: hard
 
@@ -10386,13 +10344,6 @@ __metadata:
   version: 0.8.4
   resolution: "loglevel-plugin-prefix@npm:0.8.4"
   checksum: 5fe0632fa04263e083f87204107a06aa53e40a3537e08752539f5c0fd9a0ef112fe9ba6bdaed791502156c67a4ff7993a2b2871404615f0163f4c49649c362e4
-  languageName: node
-  linkType: hard
-
-"loglevel@npm:1.8.0":
-  version: 1.8.0
-  resolution: "loglevel@npm:1.8.0"
-  checksum: 41aeea17de24aba8dba68084a31fe9189648bce4f39c1277e021bb276c3c53a75b0d337395919cf271068ad40ecefabad0e4fdeb4a8f11908beee532b898f4a7
   languageName: node
   linkType: hard
 

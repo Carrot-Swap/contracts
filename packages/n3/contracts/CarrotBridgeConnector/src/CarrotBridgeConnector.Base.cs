@@ -29,6 +29,7 @@ namespace Carrot.Bridge
 
     public static void initialize(UInt160 tssAddress_, UInt160 tssAddressUpdater_, UInt160 pauserAddress_)
     {
+      Assert(pauserAddress() == UInt160.Zero, "Already Intilized");
       Assert(tssAddress_.IsValid, "Invalid address");
       Assert(tssAddressUpdater_.IsValid, "Invalid address");
       Assert(pauserAddress_.IsValid, "Invalid address");
