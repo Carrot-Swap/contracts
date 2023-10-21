@@ -29,7 +29,7 @@ namespace Carrot.Bridge.Core
         UInt160 txOriginAddress,
         UInt160 txSenderAddress,
         BigInteger destinationChainId,
-        byte[] destinationAddress,
+        UInt160 destinationAddress,
         BigInteger destinationGasLimit,
         byte[] message,
         byte[] bridgeParams)
@@ -53,7 +53,7 @@ namespace Carrot.Bridge.Core
      * This method can be called only by TSS.
      */
     public static void onReceive(
-        byte[] txSenderAddress,
+        UInt160 txSenderAddress,
         BigInteger sourceChainId,
         UInt160 destinationAddress,
         byte[] message,
@@ -86,7 +86,7 @@ namespace Carrot.Bridge.Core
     public static void onRevert(
         UInt160 txSenderAddress,
         BigInteger sourceChainId,
-        byte[] destinationAddress,
+        UInt160 destinationAddress,
         BigInteger destinationChainId,
         byte[] message,
         byte[] internalSendHash

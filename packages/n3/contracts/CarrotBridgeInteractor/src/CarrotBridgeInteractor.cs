@@ -71,7 +71,7 @@ namespace Carrot.Bridge.Base
         UInt160 txOriginAddress,
         UInt160 txSenderAddress,
         BigInteger destinationChainId,
-        byte[] destinationAddress,
+        UInt160 destinationAddress,
         BigInteger destinationGasLimit,
         byte[] message,
         byte[] bridgeParams)

@@ -8,8 +8,7 @@ export async function deployTokenBridge(
   const deployer = getDeployer();
   const bridge = await deploy("TokenBridge", { name: "Test3" });
   const res = await bridge.contract.call("connectorAddress");
-  console.log(res.getAddress());
-  if (res.getAddress() !== "0x0000") {
+  if (!!res.getValue()) {
     return bridge;
   }
   await bridge.contract.invoke("initilize", [

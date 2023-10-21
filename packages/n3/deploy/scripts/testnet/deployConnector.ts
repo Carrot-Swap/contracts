@@ -6,7 +6,7 @@ export async function deployConnector() {
   const deployer = getDeployer();
 
   const res = await connector.contract.call("pauserAddress");
-  if (res.getAddress() !== "0x0000") {
+  if (!!res.getValue()) {
     return connector;
   }
 

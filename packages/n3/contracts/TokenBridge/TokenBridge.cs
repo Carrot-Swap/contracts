@@ -23,7 +23,7 @@ namespace Carrot.TokenBridge
   {
     private static Carrot.CoreStorage storage = new Carrot.CoreStorage(new byte[] { 0x01 });
 
-    public static void send(BigInteger destinationChainId, byte[] destinationAddress, BigInteger tokenId, BigInteger amount)
+    public static void send(BigInteger destinationChainId, UInt160 destinationAddress, BigInteger tokenId, BigInteger amount)
     {
       var message = new ABIBuilder()
             .add(tokenId)
@@ -46,7 +46,7 @@ namespace Carrot.TokenBridge
     public static void onBridgeMessage(
         byte[] txSenderAddress,
         BigInteger sourceChainId,
-        BigInteger destinationAddress,
+        UInt160 destinationAddress,
         byte[] message)
     {
 
@@ -59,7 +59,7 @@ namespace Carrot.TokenBridge
     public static void onBridgeRevert(
         UInt160 txSenderAddress,
         BigInteger sourceChainId,
-        byte[] destinationAddress,
+        UInt160 destinationAddress,
         BigInteger destinationChainId,
         byte[] message)
     {
