@@ -8,6 +8,7 @@ using System.Numerics;
 using Neo.SmartContract.Framework;
 using Neo.SmartContract.Framework.Attributes;
 using Neo.SmartContract.Framework.Native;
+using Carrot.ABI;
 using Carrot.Bridge.Base;
 using static Neo.SmartContract.Framework.ExecutionEngine;
 
@@ -22,16 +23,20 @@ namespace Carrot.TokenBridge
   {
     private static Carrot.CoreStorage storage = new Carrot.CoreStorage(new byte[] { 0x01 });
 
-    public static void send(UInt256 destinationChainId, byte[] destinationAddress, UInt256 tokenId, UInt256 amount)
+    public static void send(BigInteger destinationChainId, byte[] destinationAddress, BigInteger tokenId, BigInteger amount)
     {
-      var message = new TokenBridgeMessage(tokenId, amount);
+      var message = new ABIBuilder()
+            .add(tokenId)
+            .add(amount)
+            .build();
+
       sendBridgeMessage(
         Runtime.EntryScriptHash,
         Runtime.ExecutingScriptHash,
         destinationChainId,
         destinationAddress,
-        UInt256.Zero,
-        (byte[])StdLib.Serialize(message),
+        0,
+        message,
         null);
     }
 
@@ -40,8 +45,8 @@ namespace Carrot.TokenBridge
      */
     public static void onBridgeMessage(
         byte[] txSenderAddress,
-        UInt256 sourceChainId,
-        UInt160 destinationAddress,
+        BigInteger sourceChainId,
+        BigInteger destinationAddress,
         byte[] message)
     {
 
@@ -53,24 +58,12 @@ namespace Carrot.TokenBridge
      */
     public static void onBridgeRevert(
         UInt160 txSenderAddress,
-        UInt256 sourceChainId,
+        BigInteger sourceChainId,
         byte[] destinationAddress,
-        UInt256 destinationChainId,
+        BigInteger destinationChainId,
         byte[] message)
     {
 
-    }
-
-    struct TokenBridgeMessage
-    {
-      public TokenBridgeMessage(UInt256 id, UInt256 amount)
-      {
-        id = id;
-        amount = amount;
-      }
-
-      public UInt256 id;
-      public UInt256 amount;
     }
 
   }

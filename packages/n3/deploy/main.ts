@@ -1,7 +1,12 @@
-import { testnet } from "./scripts/testnet";
+import { testnet } from "./scripts/testnet/testnet";
 
 export async function main() {
-  await testnet();
+  try {
+    await testnet();
+  } catch (e) {
+    console.error(e);
+    throw e;
+  }
 }
 
 main();

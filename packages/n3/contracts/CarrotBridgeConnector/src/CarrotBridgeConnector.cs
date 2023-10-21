@@ -28,13 +28,13 @@ namespace Carrot.Bridge.Core
     public static void send(
         UInt160 txOriginAddress,
         UInt160 txSenderAddress,
-        UInt256 destinationChainId,
+        BigInteger destinationChainId,
         byte[] destinationAddress,
-        UInt256 destinationGasLimit,
+        BigInteger destinationGasLimit,
         byte[] message,
         byte[] bridgeParams)
     {
-      Assert(isPaused(), "Paused");
+      Assert(!isPaused(), "Paused");
 
       OnBridgeMessageSent(
           txOriginAddress,
@@ -54,7 +54,7 @@ namespace Carrot.Bridge.Core
      */
     public static void onReceive(
         byte[] txSenderAddress,
-        UInt256 sourceChainId,
+        BigInteger sourceChainId,
         UInt160 destinationAddress,
         byte[] message,
         byte[] internalSendHash
@@ -85,14 +85,14 @@ namespace Carrot.Bridge.Core
      */
     public static void onRevert(
         UInt160 txSenderAddress,
-        UInt256 sourceChainId,
+        BigInteger sourceChainId,
         byte[] destinationAddress,
-        UInt256 destinationChainId,
+        BigInteger destinationChainId,
         byte[] message,
         byte[] internalSendHash
     )
     {
-      Assert(isPaused(), "Paused");
+      Assert(!isPaused(), "Paused");
       Assert(isTss(), "Permission denied");
       if (message.Length > 0)
       {
@@ -111,7 +111,6 @@ namespace Carrot.Bridge.Core
                 destinationAddress,
                 message,
                 internalSendHash
-
             );
     }
 

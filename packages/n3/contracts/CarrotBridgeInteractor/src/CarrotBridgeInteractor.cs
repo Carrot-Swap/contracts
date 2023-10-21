@@ -19,7 +19,7 @@ namespace Carrot.Bridge.Base
     private static Carrot.CoreStorage storage() => new Carrot.CoreStorage(new byte[] { 0x01 });
     private static Carrot.CoreStorage interactorsByChainIdStorage() => new Carrot.CoreStorage(new byte[] { 0x02 });
 
-    public static void initilize(UInt160 owner, UInt160 connectorAddress, UInt256 currentChainId)
+    public static void initilize(UInt160 owner, UInt160 connectorAddress, BigInteger currentChainId)
     {
       Assert(getOwner() == UInt160.Zero, "Already Initilized");
 
@@ -29,7 +29,7 @@ namespace Carrot.Bridge.Base
       map.Put("owner", owner);
     }
 
-    private static void isValidMessageCall(byte[] txSenderAddress, byte[] sourceChainId)
+    private static void isVaidMessageCall(byte[] txSenderAddress, byte[] sourceChainId)
     {
       isValidCaller();
       Assert(((UInt160)txSenderAddress) == (UInt160)interactorsByChainIdStorage().get((UInt256)sourceChainId, UInt160.Zero), "Invalid interactor");
@@ -43,10 +43,10 @@ namespace Carrot.Bridge.Base
     }
 
     [Safe]
-    private static UInt160 connectorAddress() => (UInt160)storage().get("connectorAddress", UInt160.Zero);
+    public static UInt160 connectorAddress() => (UInt160)storage().get("connectorAddress", UInt160.Zero);
 
     [Safe]
-    private static UInt256 currentChainId() => (UInt256)storage().get("currentChainId", UInt256.Zero);
+    public static UInt256 currentChainId() => (UInt256)storage().get("currentChainId", UInt256.Zero);
 
     private static void isValidCaller()
     {
@@ -70,9 +70,9 @@ namespace Carrot.Bridge.Base
     protected static void sendBridgeMessage(
         UInt160 txOriginAddress,
         UInt160 txSenderAddress,
-        UInt256 destinationChainId,
+        BigInteger destinationChainId,
         byte[] destinationAddress,
-        UInt256 destinationGasLimit,
+        BigInteger destinationGasLimit,
         byte[] message,
         byte[] bridgeParams)
     {
