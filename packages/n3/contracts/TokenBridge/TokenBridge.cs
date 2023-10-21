@@ -8,31 +8,31 @@ using System.Numerics;
 using Neo.SmartContract.Framework;
 using Neo.SmartContract.Framework.Attributes;
 using Neo.SmartContract.Framework.Native;
-using Carrot.Bridge;
+using Carrot.Bridge.Base;
 using static Neo.SmartContract.Framework.ExecutionEngine;
 
-namespace Carrot.Main
+namespace Carrot.TokenBridge
 {
   [DisplayName("TokenBridge")]
   [ManifestExtra("Author", "Carrot Swap")]
   [ManifestExtra("Description", "Carrot Swap Bridge contract")]
   [SupportedStandards("NEP17", "NEP10")]
   [ContractPermission("*", "*")]
-  public abstract partial class TokenBridge : CarrotBridgeInteractor
+  public partial class TokenBridge : CarrotBridgeInteractor
   {
     private static Carrot.CoreStorage storage = new Carrot.CoreStorage(new byte[] { 0x01 });
 
-    public static void send(UInt256 destinationChainId, byte[] destinationAddress, byte[] message)
+    public static void send(UInt256 destinationChainId, byte[] destinationAddress, UInt256 tokenId, UInt256 amount)
     {
+      var message = new TokenBridgeMessage(tokenId, amount);
       sendBridgeMessage(
-         Runtime.EntryScriptHash,
-         Runtime.ExecutingScriptHash,
-         destinationChainId,
-         destinationAddress,
-         0,
-        message,
-        null)
-
+        Runtime.EntryScriptHash,
+        Runtime.ExecutingScriptHash,
+        destinationChainId,
+        destinationAddress,
+        UInt256.Zero,
+        (byte[])StdLib.Serialize(message),
+        null);
     }
 
     /**
@@ -60,5 +60,18 @@ namespace Carrot.Main
     {
 
     }
+
+    struct TokenBridgeMessage
+    {
+      public TokenBridgeMessage(UInt256 id, UInt256 amount)
+      {
+        id = id;
+        amount = amount;
+      }
+
+      public UInt256 id;
+      public UInt256 amount;
+    }
+
   }
 }

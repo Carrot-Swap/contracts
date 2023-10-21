@@ -11,13 +11,13 @@ using Neo.SmartContract.Framework.Native;
 using Carrot;
 using static Neo.SmartContract.Framework.ExecutionEngine;
 
-namespace Carrot.Bridge
+namespace Carrot.Bridge.Base
 {
   public abstract partial class CarrotBridgeInteractor
   {
 
     [Safe]
-    public static UInt160 getOwner() => (UInt160)storage.get("owner", UInt160.Zero);
+    public static UInt160 getOwner() => (UInt160)storage().get("owner", UInt160.Zero);
 
     [Safe]
     public static bool isOwner() => Runtime.CheckWitness(getOwner());
@@ -28,7 +28,7 @@ namespace Carrot.Bridge
       Assert(owner == UInt160.Zero || isOwner(), "Permission Denied");
       Assert(address.IsValid, "Invalid Address");
 
-      storage.getStorage().Put("owner", address);
+      storage().getStorage().Put("owner", address);
     }
 
   }

@@ -1,0 +1,15 @@
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/obj/Debug/net7.0/TokenBridge.csproj.AssemblyReference.cache
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/obj/Debug/net7.0/TokenBridge.GeneratedMSBuildEditorConfig.editorconfig
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/obj/Debug/net7.0/TokenBridge.AssemblyInfoInputs.cache
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/obj/Debug/net7.0/TokenBridge.AssemblyInfo.cs
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/obj/Debug/net7.0/TokenBridge.csproj.CoreCompileInputs.cache
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/bin/Debug/net7.0/TokenBridge.deps.json
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/bin/Debug/net7.0/TokenBridge.dll
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/bin/Debug/net7.0/TokenBridge.pdb
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/obj/Debug/net7.0/TokenBridge.dll
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/obj/Debug/net7.0/refint/TokenBridge.dll
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/obj/Debug/net7.0/TokenBridge.pdb
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/obj/Debug/net7.0/ref/TokenBridge.dll
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/bin/Debug/net7.0/Carrot.Bridge.Base.dll
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/bin/Debug/net7.0/Carrot.Bridge.Base.pdb
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/TokenBridge/obj/Debug/net7.0/TokenBridge.csproj.CopyComplete

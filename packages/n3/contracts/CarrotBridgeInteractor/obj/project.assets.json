@@ -251,11 +251,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeConnector/CarrotBridgeConnector.csproj",
-      "projectName": "Carrot.Bridge",
-      "projectPath": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeConnector/CarrotBridgeConnector.csproj",
+      "projectUniqueName": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/CarrotBridgeInteractor.csproj",
+      "projectName": "Carrot.Bridge.Base",
+      "projectPath": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/CarrotBridgeInteractor.csproj",
       "packagesPath": "/Users/boxfox/.nuget/packages/",
-      "outputPath": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeConnector/obj/",
+      "outputPath": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/NuGet.Config",

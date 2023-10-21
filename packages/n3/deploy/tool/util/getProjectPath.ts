@@ -7,7 +7,7 @@ export async function getProjectPath(project: string) {
   if (cache[project]) {
     return cache[project];
   }
-  const target = await findFile("perlin", `${project}.csproj`);
+  const target = await findFile("contracts", `${project}.csproj`);
   if (!target) {
     throw new Error(`Project can't find [${project}]`);
   }

@@ -1,0 +1,12 @@
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/obj/Debug/net7.0/CarrotBridgeInteractor.csproj.AssemblyReference.cache
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/obj/Debug/net7.0/CarrotBridgeInteractor.GeneratedMSBuildEditorConfig.editorconfig
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/obj/Debug/net7.0/CarrotBridgeInteractor.AssemblyInfoInputs.cache
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/obj/Debug/net7.0/CarrotBridgeInteractor.AssemblyInfo.cs
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/obj/Debug/net7.0/CarrotBridgeInteractor.csproj.CoreCompileInputs.cache
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/bin/Debug/net7.0/Carrot.Bridge.Base.deps.json
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/bin/Debug/net7.0/Carrot.Bridge.Base.dll
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/bin/Debug/net7.0/Carrot.Bridge.Base.pdb
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/obj/Debug/net7.0/Carrot.Bridge.Base.dll
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/obj/Debug/net7.0/refint/Carrot.Bridge.Base.dll
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/obj/Debug/net7.0/Carrot.Bridge.Base.pdb
+/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/obj/Debug/net7.0/ref/Carrot.Bridge.Base.dll

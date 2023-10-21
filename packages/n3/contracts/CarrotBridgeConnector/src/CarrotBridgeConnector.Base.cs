@@ -11,7 +11,7 @@ using Neo.SmartContract.Framework.Native;
 using Carrot;
 using static Neo.SmartContract.Framework.ExecutionEngine;
 
-namespace Carrot.Bridge
+namespace Carrot.Bridge.Core
 {
   public partial class CarrotBridgeConnector
   {

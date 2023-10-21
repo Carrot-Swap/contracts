@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xhAhdl4Plbj2o86TW/+xYNUR3KO3TU/KA8RNokuTXEJwnXbNQiAXniweBjoFVy/lDcHjfJ8Gy496R7CSxeZ0og==",
+  "dgSpecHash": "hyccBFD/QRd//JfaA8gmiZ5USaZPJE2RYmIBPTJAJKv12hJmQXxKH2lE/EwPt1j4ZKniBeesx4VP5poaX+relA==",
   "success": true,
-  "projectFilePath": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeConnector/CarrotBridgeConnector.csproj",
+  "projectFilePath": "/Users/boxfox/Desktop/projects/pepper-contracts/packages/n3/contracts/CarrotBridgeInteractor/CarrotBridgeInteractor.csproj",
   "expectedPackageFiles": [
     "/Users/boxfox/.nuget/packages/neo.smartcontract.framework/3.6.0/neo.smartcontract.framework.3.6.0.nupkg.sha512",
     "/Users/boxfox/.nuget/packages/neo3.compiler.csharp.dev/3.6.0/neo3.compiler.csharp.dev.3.6.0.nupkg.sha512",

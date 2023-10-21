@@ -1,19 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyTitle>Carrot.Bridge</AssemblyTitle>
-    <AssemblyName>Carrot.Bridge</AssemblyName>
-    <PackageId>Carrot.Bridge</PackageId>
-    <PackAsTool>true</PackAsTool>
-    <RootNamespace>Carrot.Bridge</RootNamespace>
+    <NeoContractName>$(AssemblyName)</NeoContractName>
+    <Nullable>enable</Nullable>
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <ProjectReference Include="..\CarrotBridgeInteractor\CarrotBridgeInteractor.csproj">
-      <Private>false</Private>
-    </ProjectReference>
+    <ProjectReference Include="..\CarrotBridgeInteractor\CarrotBridgeInteractor.csproj" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="$(neon3) $(ProjectDir)" />
+  </Target>
   
 </Project>

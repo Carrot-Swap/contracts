@@ -9,7 +9,7 @@ using Neo.SmartContract.Framework;
 using Neo.SmartContract.Framework.Attributes;
 using Carrot;
 
-namespace Carrot.Bridge
+namespace Carrot.Bridge.Core
 {
   public partial class CarrotBridgeConnector
   {
