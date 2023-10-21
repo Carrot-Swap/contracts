@@ -7,7 +7,6 @@ export function bigEndianToLittleEndian(hex: string) {
 export function littleEndianToBigEndian(hex: string) {
   return (hex.match(/.{64}/g) || [])
     .map((part) => {
-      console.log("---", part);
       const byteArray = (part.match(/../g) ?? []).map((item) =>
         parseInt(item, 16)
       );

@@ -1,15 +1,5 @@
-using System.ComponentModel;
-using Neo.SmartContract.Framework;
-using Neo.SmartContract.Framework.Services;
-using Neo.SmartContract.Framework.Attributes;
-using Neo;
 using System;
-using System.Numerics;
 using Neo.SmartContract.Framework;
-using Neo.SmartContract.Framework.Attributes;
-using Neo.SmartContract.Framework.Native;
-using Carrot.Bridge.Base;
-using static Neo.SmartContract.Framework.ExecutionEngine;
 
 namespace Carrot.ABI
 {
@@ -21,6 +11,12 @@ namespace Carrot.ABI
     public ABIBuilder add(System.Numerics.BigInteger value)
     {
       data = data.Concat(Util.BigInteger.encode(value));
+      return this;
+    }
+
+    public ABIBuilder add(Neo.UInt160 value)
+    {
+      data = data.Concat(Util.UInt160.encode(value));
       return this;
     }
 
@@ -52,13 +48,37 @@ namespace Carrot.ABI
       {
         var data = amount.ToByteArray();
         var placeholder = new byte[32 - data.Length];
-
         return data.Concat(placeholder);
       }
 
       public static System.Numerics.BigInteger decode(byte[] data, int idx)
       {
         return new System.Numerics.BigInteger(Common.getPart(data, idx));
+      }
+
+      private static byte[] Reverse(byte[] data)
+      {
+        var placeholder = new byte[32];
+        for (int i = 0; i < data.Length; i++)
+        {
+          placeholder[placeholder.Length - 1 - i] = data[i];
+        }
+        return placeholder;
+      }
+    }
+
+    class UInt160
+    {
+      public static byte[] encode(Neo.UInt160 value)
+      {
+        var data = (byte[])value;
+        var placeholder = new byte[32 - data.Length];
+        return data.Concat(placeholder);
+      }
+
+      public static Neo.UInt160 decode(byte[] data, int idx)
+      {
+        return (Neo.UInt160)Common.getPart(data, idx);
       }
     }
   }

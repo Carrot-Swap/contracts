@@ -1,16 +1,10 @@
 using System.ComponentModel;
-using Neo.SmartContract.Framework;
 using Neo.SmartContract.Framework.Services;
 using Neo.SmartContract.Framework.Attributes;
 using Neo;
-using System;
 using System.Numerics;
-using Neo.SmartContract.Framework;
-using Neo.SmartContract.Framework.Attributes;
-using Neo.SmartContract.Framework.Native;
 using Carrot.ABI;
 using Carrot.Bridge.Base;
-using static Neo.SmartContract.Framework.ExecutionEngine;
 
 namespace Carrot.TokenBridge
 {
@@ -21,11 +15,14 @@ namespace Carrot.TokenBridge
   [ContractPermission("*", "*")]
   public partial class TokenBridge : CarrotBridgeInteractor
   {
-    private static Carrot.CoreStorage storage = new Carrot.CoreStorage(new byte[] { 0x01 });
+    private static CoreStorage storage = new CoreStorage(new byte[] { 0x01 });
 
-    public static void send(BigInteger destinationChainId, UInt160 destinationAddress, BigInteger tokenId, BigInteger amount)
+    public static void send(UInt160 user, BigInteger destinationChainId, UInt160 destinationAddress, BigInteger tokenId, BigInteger amount)
     {
       var message = new ABIBuilder()
+            .add(user)
+            .add(destinationChainId)
+            .add(destinationAddress)
             .add(tokenId)
             .add(amount)
             .build();

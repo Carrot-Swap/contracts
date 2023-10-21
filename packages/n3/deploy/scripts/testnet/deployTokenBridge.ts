@@ -6,7 +6,7 @@ export async function deployTokenBridge(
   currentChainId: number
 ) {
   const deployer = getDeployer();
-  const bridge = await deploy("TokenBridge", { name: "Test3" });
+  const bridge = await deploy("TokenBridge", { name: "Test4" });
   const res = await bridge.contract.call("connectorAddress");
   if (!!res.getValue()) {
     return bridge;
