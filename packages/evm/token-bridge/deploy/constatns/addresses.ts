@@ -24,9 +24,9 @@ export const TOKEN_ADDRESSES: Record<string, Record<string, string>> = {
 };
 
 export const BRIDGE_ADDRESSES: Record<string, string> = {
-  neo_n3_testnet: "0x45a1c1eb5d89baa9140e5e1e8926af7c8a94cd80",
+  neo_n3_testnet: "0x92aedf18d7d4959e8ac6d19dd0924e6280b60a18",
   neo_testnet: "0xF056e7cfD3A451695FbB2E2D095bd649244Fe759",
-  polygon_mumbai: "0x2987B8C58B205134b9b5444079d6C4e3C7d5835E",
+  polygon_mumbai: "0x7e753a9f5585e67149d452F94309f490c3853A89",
   // polygon_mumbai: "",
   // bnb_testnet: "",
   // eth_goril: "",

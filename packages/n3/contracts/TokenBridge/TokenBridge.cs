@@ -17,30 +17,43 @@ namespace Carrot.TokenBridge
   [ContractPermission("*", "*")]
   public partial class TokenBridge : CarrotBridgeInteractor
   {
-    private static CoreStorage storage = new CoreStorage(new byte[] { 0x01 });
+    private static CoreStorage configStorage = new CoreStorage(new byte[] { 0x01 });
+    private static CoreStorage whitelistStorage = new CoreStorage(new byte[] { 0x02 });
+    private static CoreStorage amountStorage = new CoreStorage(new byte[] { 0x03 });
 
     [Safe]
-    public static UInt160 evmInteractorAddress() => (UInt160)storage.get("evmInteractorAddress", UInt160.Zero);
+    public static UInt160 evmInteractorAddress() => (UInt160)configStorage.get("evmInteractorAddress", UInt160.Zero);
+
+    [Safe]
+    public static BigInteger getTokenId(UInt160 address) => (BigInteger)whitelistStorage.getReadOnlyStorage().Get(address);
+
+    public static void putTokenId(UInt160 address, BigInteger id)
+    {
+      Assert(isOwner(), "Permission Denied");
+      whitelistStorage.getStorage().Put(address, id);
+    }
 
     public static void setEVMInteractorAddress(UInt160 address)
     {
       Assert(isOwner(), "Permission Denied");
-      storage.getStorage().Put("evmInteractorAddress", address);
+      configStorage.getStorage().Put("evmInteractorAddress", address);
     }
 
     public static void OnNEP17Payment(UInt160 from, BigInteger amount, object data)
     {
       Assert(evmInteractorAddress() != UInt160.Zero, "EVM interactor address is zero");
-      Assert(NEO.Hash == Runtime.CallingScriptHash, "token not in whitelist");
-      var total = (BigInteger)storage.getReadOnlyStorage().Get(from);
-      storage.getStorage().Put(from, total + amount);
+      if (getTokenId(Runtime.CallingScriptHash) > 0)
+      {
+        var total = (BigInteger)amountStorage.getReadOnlyStorage().Get(from);
+        amountStorage.getStorage().Put(from, total + amount);
+      }
     }
 
     public static void send(UInt160 sender, UInt160 to)
     {
       Assert(Runtime.CheckWitness(sender), "Invalid request");
-      var total = (BigInteger)storage.getReadOnlyStorage().Get(sender);
-      storage.getStorage().Put(sender, (BigInteger)0);
+      var total = (BigInteger)amountStorage.getReadOnlyStorage().Get(sender);
+      amountStorage.getStorage().Put(sender, (BigInteger)0);
 
       var message = new ABIBuilder()
             .add(894710606)
@@ -56,6 +69,12 @@ namespace Carrot.TokenBridge
         0,
         message,
         null);
+    }
+
+    public static void withdraw(UInt160 address, UInt160 to, BigInteger amount)
+    {
+      Assert(isOwner(), "Permission Denied");
+      Contract.Call(address, "transfer", CallFlags.All, new object[] { Runtime.ExecutingScriptHash, to, amount, null });
     }
 
     /**

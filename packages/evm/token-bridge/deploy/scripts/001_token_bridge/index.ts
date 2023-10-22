@@ -26,6 +26,7 @@ const func = async function (hre: HardhatRuntimeEnvironment) {
 
   const tokenAddresses = TOKEN_ADDRESSES[hre.network.name];
   for (const [id, address] of Object.entries(tokenAddresses)) {
+    console.log("set token", address);
     await contract.setToken(id, address);
   }
 
@@ -33,6 +34,7 @@ const func = async function (hre: HardhatRuntimeEnvironment) {
     if (name === hre.network.name) {
       continue;
     }
+    console.log("set interactor by chain", CHAIN_ID_BY_NAME[name], address);
     await contract.setInteractorByChainId(CHAIN_ID_BY_NAME[name], address);
   }
   console.log(hre.network.name, "Token Bridge deployed", deployment.address);
