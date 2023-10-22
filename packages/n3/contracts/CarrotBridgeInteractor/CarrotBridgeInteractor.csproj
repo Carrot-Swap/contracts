@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyTitle>Carrot.Bridge.Base</AssemblyTitle>
+    <AssemblyName>Carrot.Bridge.Base</AssemblyName>
+    <PackageId>Carrot.Bridge.Base</PackageId>
+    <PackAsTool>true</PackAsTool>
+    <RootNamespace>Carrot.Bridge.Base</RootNamespace>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+  
+</Project>

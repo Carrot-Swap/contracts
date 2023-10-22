@@ -1,0 +1,643 @@
+{
+  "address": "0xfef2e1ebcde3563F377f5B8f3B96eA85Dcd45540",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tssAddress_",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "tssAddressUpdater_",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "pauserAddress_",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        }
+      ],
+      "name": "CallerIsNotPauser",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        }
+      ],
+      "name": "CallerIsNotTss",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        }
+      ],
+      "name": "CallerIsNotTssOrUpdater",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        }
+      ],
+      "name": "CallerIsNotTssUpdater",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "EnforcedPause",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "maxSupply",
+          "type": "uint256"
+        }
+      ],
+      "name": "ExceedsMaxSupply",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ExpectedPause",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidAddress",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "bridgeTxSenderAddress",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "sourceChainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "destinationAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "message",
+          "type": "bytes"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "internalSendHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "BridgeMessageReceived",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "bridgeTxSenderAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "sourceChainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "destinationChainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "destinationAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "message",
+          "type": "bytes"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "internalSendHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "BridgeMessageReverted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "sourceTxOriginAddress",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "bridgeTxSenderAddress",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "destinationChainId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "destinationAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "destinationGasLimit",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "message",
+          "type": "bytes"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "bridgeParams",
+          "type": "bytes"
+        }
+      ],
+      "name": "BridgeMessageSent",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Paused",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "callerAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newTssAddress",
+          "type": "address"
+        }
+      ],
+      "name": "PauserAddressUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "callerAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newTssAddress",
+          "type": "address"
+        }
+      ],
+      "name": "TSSAddressUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "callerAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newTssUpdaterAddress",
+          "type": "address"
+        }
+      ],
+      "name": "TSSAddressUpdaterUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "Unpaused",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "txSenderAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sourceChainId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "destinationAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "message",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "internalSendHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "onReceive",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "txSenderAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "sourceChainId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "destinationAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "destinationChainId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "message",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "internalSendHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "onRevert",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pause",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "paused",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pauserAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceTssAddressUpdater",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "destinationChainId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "destinationAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "destinationGasLimit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes",
+              "name": "message",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bytes",
+              "name": "bridgeParams",
+              "type": "bytes"
+            }
+          ],
+          "internalType": "struct CarrotBridgeInterfaces.SendInput",
+          "name": "input",
+          "type": "tuple"
+        }
+      ],
+      "name": "send",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tssAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tssAddressUpdater",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "unpause",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "pauserAddress_",
+          "type": "address"
+        }
+      ],
+      "name": "updatePauserAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tssAddress_",
+          "type": "address"
+        }
+      ],
+      "name": "updateTssAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x19b917c8a256c5768120f59f8643904b2593cad00da1bee0b9fcf2958b39d018",
+  "receipt": {
+    "to": null,
+    "from": "0xef1F5D4C835Ac094F8D96C26c2A964C99b4050e0",
+    "contractAddress": "0xfef2e1ebcde3563F377f5B8f3B96eA85Dcd45540",
+    "transactionIndex": 1,
+    "gasUsed": "4376916",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xa33eaa813210fc11639933791ba0e9948073921b2bb833e7ac09e78f1e95c104",
+    "transactionHash": "0x19b917c8a256c5768120f59f8643904b2593cad00da1bee0b9fcf2958b39d018",
+    "logs": [],
+    "blockNumber": 1003597,
+    "cumulativeGasUsed": "4954422",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xef1F5D4C835Ac094F8D96C26c2A964C99b4050e0",
+    "0xef1F5D4C835Ac094F8D96C26c2A964C99b4050e0",
+    "0xef1F5D4C835Ac094F8D96C26c2A964C99b4050e0"
+  ],
+  "numDeployments": 2,
+  "solcInputHash": "39c14ec8fa5f32156481a0b76bcf16b7",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tssAddress_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tssAddressUpdater_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"pauserAddress_\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"CallerIsNotPauser\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"CallerIsNotTss\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"CallerIsNotTssOrUpdater\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"CallerIsNotTssUpdater\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"EnforcedPause\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"maxSupply\",\"type\":\"uint256\"}],\"name\":\"ExceedsMaxSupply\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ExpectedPause\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidAddress\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"bridgeTxSenderAddress\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"sourceChainId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"destinationAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"message\",\"type\":\"bytes\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"internalSendHash\",\"type\":\"bytes32\"}],\"name\":\"BridgeMessageReceived\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"bridgeTxSenderAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"sourceChainId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"destinationChainId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"destinationAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"message\",\"type\":\"bytes\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"internalSendHash\",\"type\":\"bytes32\"}],\"name\":\"BridgeMessageReverted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"sourceTxOriginAddress\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"bridgeTxSenderAddress\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"destinationChainId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"destinationAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"destinationGasLimit\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"message\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"bridgeParams\",\"type\":\"bytes\"}],\"name\":\"BridgeMessageSent\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Paused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"callerAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newTssAddress\",\"type\":\"address\"}],\"name\":\"PauserAddressUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"callerAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newTssAddress\",\"type\":\"address\"}],\"name\":\"TSSAddressUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"callerAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newTssUpdaterAddress\",\"type\":\"address\"}],\"name\":\"TSSAddressUpdaterUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Unpaused\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"txSenderAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"sourceChainId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"destinationAddress\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"message\",\"type\":\"bytes\"},{\"internalType\":\"bytes32\",\"name\":\"internalSendHash\",\"type\":\"bytes32\"}],\"name\":\"onReceive\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"txSenderAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"sourceChainId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"destinationAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"destinationChainId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"message\",\"type\":\"bytes\"},{\"internalType\":\"bytes32\",\"name\":\"internalSendHash\",\"type\":\"bytes32\"}],\"name\":\"onRevert\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pauserAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceTssAddressUpdater\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"destinationChainId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"destinationAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"destinationGasLimit\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"message\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"bridgeParams\",\"type\":\"bytes\"}],\"internalType\":\"struct CarrotBridgeInterfaces.SendInput\",\"name\":\"input\",\"type\":\"tuple\"}],\"name\":\"send\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tssAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tssAddressUpdater\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"unpause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"pauserAddress_\",\"type\":\"address\"}],\"name\":\"updatePauserAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tssAddress_\",\"type\":\"address\"}],\"name\":\"updateTssAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"ETH implementation of CarrotBridgeConnector. This contract manages interactions between TSS and different chains.\",\"errors\":{\"EnforcedPause()\":[{\"details\":\"The operation failed because the contract is paused.\"}],\"ExpectedPause()\":[{\"details\":\"The operation failed because the contract is not paused.\"}]},\"kind\":\"dev\",\"methods\":{\"onReceive(address,uint256,address,bytes,bytes32)\":{\"details\":\"Handler to receive data from other chain. This method can be called only by TSS.\"},\"onRevert(address,uint256,address,uint256,bytes,bytes32)\":{\"details\":\"Handler to receive errors from other chain. This method can be called only by TSS.\"},\"pause()\":{\"details\":\"Pause the input (send) transactions.\"},\"paused()\":{\"details\":\"Returns true if the contract is paused, and false otherwise.\"},\"renounceTssAddressUpdater()\":{\"details\":\"Changes the ownership of tssAddressUpdater to be the one held by the CarrotBridge TSS Signer nodes.\"},\"send((uint256,address,uint256,bytes,bytes))\":{\"details\":\"Entrypoint to send data through CarrotBridge This call locks the token on the contract and emits an event with all the data needed by the protocol.\"},\"unpause()\":{\"details\":\"Unpause the contract to allow transactions again.\"},\"updatePauserAddress(address)\":{\"details\":\"Update the pauser address. The only address allowed to do that is the current pauser.\"},\"updateTssAddress(address)\":{\"details\":\"Update the TSS address. The address can be updated by the TSS updater or the TSS address itself.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/CarrotBridgeConnector.non-fee.sol\":\"CarrotBridgeConnectorNonFee\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/CarrotBridgeConnector.base.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.7;\\n\\nimport \\\"./libraries/Pausable.sol\\\";\\n\\nimport \\\"./interfaces/ConnectorErrors.sol\\\";\\nimport \\\"./interfaces/CarrotBridgeInterfaces.sol\\\";\\n\\n/**\\n * @dev Main abstraction of CarrotBridgeConnector.\\n * This contract manages interactions between TSS and different chains.\\n * There's an instance of this contract on each chain supported by CarrotBridge.\\n */\\ncontract CarrotBridgeConnectorBase is ConnectorErrors, Pausable {\\n    /**\\n     * @dev Multisig contract to pause incoming transactions.\\n     * The responsibility of pausing outgoing transactions is left to the protocol for more flexibility.\\n     */\\n    address public pauserAddress;\\n\\n    /**\\n     * @dev Collectively held by CarrotBridge validators.\\n     */\\n    address public tssAddress;\\n\\n    /**\\n     * @dev This address will start pointing to a multisig contract, then it will become the TSS address itself.\\n     */\\n    address public tssAddressUpdater;\\n\\n    event BridgeMessageSent(\\n        address sourceTxOriginAddress,\\n        address indexed bridgeTxSenderAddress,\\n        uint256 indexed destinationChainId,\\n        address destinationAddress,\\n        uint256 destinationGasLimit,\\n        bytes message,\\n        bytes bridgeParams\\n    );\\n\\n    event BridgeMessageReceived(\\n        address bridgeTxSenderAddress,\\n        uint256 indexed sourceChainId,\\n        address indexed destinationAddress,\\n        bytes message,\\n        bytes32 indexed internalSendHash\\n    );\\n\\n    event BridgeMessageReverted(\\n        address bridgeTxSenderAddress,\\n        uint256 sourceChainId,\\n        uint256 indexed destinationChainId,\\n        address destinationAddress,\\n        bytes message,\\n        bytes32 indexed internalSendHash\\n    );\\n\\n    event TSSAddressUpdated(address callerAddress, address newTssAddress);\\n\\n    event TSSAddressUpdaterUpdated(address callerAddress, address newTssUpdaterAddress);\\n\\n    event PauserAddressUpdated(address callerAddress, address newTssAddress);\\n\\n    /**\\n     * @dev Constructor requires initial addresses.\\n     */\\n    constructor(address tssAddress_, address tssAddressUpdater_, address pauserAddress_) {\\n        if (\\n            tssAddress_ == address(0) ||\\n            tssAddressUpdater_ == address(0) ||\\n            pauserAddress_ == address(0)\\n        ) {\\n            revert CommonErrors.InvalidAddress();\\n        }\\n\\n        tssAddress = tssAddress_;\\n        tssAddressUpdater = tssAddressUpdater_;\\n        pauserAddress = pauserAddress_;\\n    }\\n\\n    /**\\n     * @dev Modifier to restrict actions to pauser address.\\n     */\\n    modifier onlyPauser() {\\n        if (msg.sender != pauserAddress) revert CallerIsNotPauser(msg.sender);\\n        _;\\n    }\\n\\n    /**\\n     * @dev Modifier to restrict actions to TSS address.\\n     */\\n    modifier onlyTssAddress() {\\n        if (msg.sender != tssAddress) revert CallerIsNotTss(msg.sender);\\n        _;\\n    }\\n\\n    /**\\n     * @dev Modifier to restrict actions to TSS updater address.\\n     */\\n    modifier onlyTssUpdater() {\\n        if (msg.sender != tssAddressUpdater) revert CallerIsNotTssUpdater(msg.sender);\\n        _;\\n    }\\n\\n    /**\\n     * @dev Update the pauser address. The only address allowed to do that is the current pauser.\\n     */\\n    function updatePauserAddress(address pauserAddress_) external onlyPauser {\\n        if (pauserAddress_ == address(0)) revert CommonErrors.InvalidAddress();\\n\\n        pauserAddress = pauserAddress_;\\n\\n        emit PauserAddressUpdated(msg.sender, pauserAddress_);\\n    }\\n\\n    /**\\n     * @dev Update the TSS address. The address can be updated by the TSS updater or the TSS address itself.\\n     */\\n    function updateTssAddress(address tssAddress_) external {\\n        if (msg.sender != tssAddress && msg.sender != tssAddressUpdater)\\n            revert CallerIsNotTssOrUpdater(msg.sender);\\n        if (tssAddress_ == address(0)) revert CommonErrors.InvalidAddress();\\n\\n        tssAddress = tssAddress_;\\n\\n        emit TSSAddressUpdated(msg.sender, tssAddress_);\\n    }\\n\\n    /**\\n     * @dev Changes the ownership of tssAddressUpdater to be the one held by the CarrotBridge TSS Signer nodes.\\n     */\\n    function renounceTssAddressUpdater() external onlyTssUpdater {\\n        if (tssAddress == address(0)) revert CommonErrors.InvalidAddress();\\n\\n        tssAddressUpdater = tssAddress;\\n        emit TSSAddressUpdaterUpdated(msg.sender, tssAddressUpdater);\\n    }\\n\\n    /**\\n     * @dev Pause the input (send) transactions.\\n     */\\n\\n    function pause() external onlyPauser {\\n        _pause();\\n    }\\n\\n    /**\\n     * @dev Unpause the contract to allow transactions again.\\n     */\\n\\n    function unpause() external onlyPauser {\\n        _unpause();\\n    }\\n\\n    /**\\n     * @dev Entrypoint to send data and value through CarrotBridge.\\n     */\\n    function send(CarrotBridgeInterfaces.SendInput calldata input) external virtual {}\\n\\n    /**\\n     * @dev Handler to receive data from other chain.\\n     * This method can be called only by TSS. Access validation is in implementation.\\n     */\\n    function onReceive(\\n        address bridgeTxSenderAddress,\\n        uint256 sourceChainId,\\n        address destinationAddress,\\n        bytes calldata message,\\n        bytes32 internalSendHash\\n    ) external virtual {}\\n\\n    /**\\n     * @dev Handler to receive errors from other chain.\\n     * This method can be called only by TSS. Access validation is in implementation.\\n     */\\n    function onRevert(\\n        address bridgeTxSenderAddress,\\n        uint256 sourceChainId,\\n        address destinationAddress,\\n        uint256 destinationChainId,\\n        bytes calldata message,\\n        bytes32 internalSendHash\\n    ) external virtual {}\\n}\\n\",\"keccak256\":\"0x89b50fa7a751882ad1fcdccc008981928e671b71d04dbc03b5369d5d5f7e29ce\",\"license\":\"MIT\"},\"contracts/CarrotBridgeConnector.non-fee.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.7;\\n\\nimport \\\"./interfaces/IERC20.sol\\\";\\n\\nimport \\\"./interfaces/ConnectorErrors.sol\\\";\\nimport \\\"./CarrotBridgeConnector.base.sol\\\";\\nimport \\\"./interfaces/CarrotBridgeInterfaces.sol\\\";\\n\\n/**\\n * @dev ETH implementation of CarrotBridgeConnector.\\n * This contract manages interactions between TSS and different chains.\\n */\\ncontract CarrotBridgeConnectorNonFee is CarrotBridgeConnectorBase {\\n    constructor(\\n        address tssAddress_,\\n        address tssAddressUpdater_,\\n        address pauserAddress_\\n    ) CarrotBridgeConnectorBase(tssAddress_, tssAddressUpdater_, pauserAddress_) {}\\n\\n    /**\\n     * @dev Entrypoint to send data through CarrotBridge\\n     * This call locks the token on the contract and emits an event with all the data needed by the protocol.\\n     */\\n    function send(CarrotBridgeInterfaces.SendInput calldata input) external override whenNotPaused {\\n        emit BridgeMessageSent(\\n            tx.origin,\\n            msg.sender,\\n            input.destinationChainId,\\n            input.destinationAddress,\\n            input.destinationGasLimit,\\n            input.message,\\n            input.bridgeParams\\n        );\\n    }\\n\\n    /**\\n     * @dev Handler to receive data from other chain.\\n     * This method can be called only by TSS.\\n     */\\n    function onReceive(\\n        address txSenderAddress,\\n        uint256 sourceChainId,\\n        address destinationAddress,\\n        bytes calldata message,\\n        bytes32 internalSendHash\\n    ) external override onlyTssAddress {\\n        if (message.length > 0) {\\n            CarrotBridgeReceiver(destinationAddress).onBridgeMessage(\\n                CarrotBridgeInterfaces.BridgeMessage(\\n                    txSenderAddress,\\n                    sourceChainId,\\n                    destinationAddress,\\n                    message\\n                )\\n            );\\n        }\\n\\n        emit BridgeMessageReceived(\\n            txSenderAddress,\\n            sourceChainId,\\n            destinationAddress,\\n            message,\\n            internalSendHash\\n        );\\n    }\\n\\n    /**\\n     * @dev Handler to receive errors from other chain.\\n     * This method can be called only by TSS.\\n     */\\n    function onRevert(\\n        address txSenderAddress,\\n        uint256 sourceChainId,\\n        address destinationAddress,\\n        uint256 destinationChainId,\\n        bytes calldata message,\\n        bytes32 internalSendHash\\n    ) external override whenNotPaused onlyTssAddress {\\n        if (message.length > 0) {\\n            CarrotBridgeReceiver(txSenderAddress).onBridgeRevert(\\n                CarrotBridgeInterfaces.BridgeRevert(\\n                    txSenderAddress,\\n                    sourceChainId,\\n                    destinationAddress,\\n                    destinationChainId,\\n                    message\\n                )\\n            );\\n        }\\n\\n        emit BridgeMessageReverted(\\n            txSenderAddress,\\n            sourceChainId,\\n            destinationChainId,\\n            destinationAddress,\\n            message,\\n            internalSendHash\\n        );\\n    }\\n}\\n\",\"keccak256\":\"0x3aecbb6410d8d2911ea13563cf86882fd69b392f27e289b5538773ab1a89992d\",\"license\":\"MIT\"},\"contracts/interfaces/CarrotBridgeInterfaces.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.7;\\n\\ninterface CarrotBridgeInterfaces {\\n    /**\\n     * @dev Use SendInput to interact with the Connector: connector.send(SendInput)\\n     */\\n    struct SendInput {\\n        /// @dev Chain id of the destination chain.\\n        uint256 destinationChainId;\\n        /// @dev Address receiving the message on the destination chain (expressed in bytes since it can be non-EVM)\\n        address destinationAddress;\\n        /// @dev Gas limit for the destination chain's transaction\\n        uint256 destinationGasLimit;\\n        /// @dev An encoded, arbitrary message to be parsed by the destination contract\\n        bytes message;\\n        /// @dev Optional parameters for the CarrotBridge protocol\\n        bytes bridgeParams;\\n    }\\n\\n    /**\\n     * @dev Our Connector calls onBridgeMessage with this struct as argument\\n     */\\n    struct BridgeMessage {\\n        address txSenderAddress;\\n        uint256 sourceChainId;\\n        address destinationAddress;\\n        bytes message;\\n    }\\n\\n    /**\\n     * @dev Our Connector calls onBridgeRevert with this struct as argument\\n     */\\n    struct BridgeRevert {\\n        address txSenderAddress;\\n        uint256 sourceChainId;\\n        address destinationAddress;\\n        uint256 destinationChainId;\\n        bytes message;\\n    }\\n}\\n\\ninterface CarrotBridgeConnector {\\n    /**\\n     * @dev Sending value and data cross-chain is as easy as calling connector.send(SendInput)\\n     */\\n    function send(CarrotBridgeInterfaces.SendInput calldata input) external;\\n}\\n\\ninterface CarrotBridgeReceiver {\\n    /**\\n     * @dev onBridgeMessage is called when a cross-chain message reaches a contract\\n     */\\n    function onBridgeMessage(CarrotBridgeInterfaces.BridgeMessage calldata bridgeMessage) external;\\n\\n    /**\\n     * @dev onBridgeRevert is called when a cross-chain message reverts.\\n     * It's useful to rollback to the original state\\n     */\\n    function onBridgeRevert(CarrotBridgeInterfaces.BridgeRevert calldata bridgeRevert) external;\\n}\\n\\ninterface CommonErrors {\\n    error InvalidAddress();\\n}\\n\",\"keccak256\":\"0x400356545f8f9eb2b47b150e7b5cdc964f7b37d370be2f539f806a2507942109\",\"license\":\"MIT\"},\"contracts/interfaces/ConnectorErrors.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.7;\\n\\n/**\\n * @dev Interface with connector custom errors\\n */\\ninterface ConnectorErrors {\\n    // @dev Thrown when caller is not the address defined as paused address\\n    error CallerIsNotPauser(address caller);\\n\\n    // @dev Thrown when caller is not the address defined as TSS address\\n    error CallerIsNotTss(address caller);\\n\\n    // @dev Thrown when caller is not the address defined as TSS Updater address\\n    error CallerIsNotTssUpdater(address caller);\\n\\n    // @dev Thrown when caller is not the address defined as TSS or TSS Updater address\\n    error CallerIsNotTssOrUpdater(address caller);\\n\\n    // @dev Thrown when maxSupply will be exceed if minting will proceed\\n    error ExceedsMaxSupply(uint256 maxSupply);\\n}\\n\",\"keccak256\":\"0xddce7d4ebd128004e9d63f85a4a9d1a9f0d2a63aefa445ca9cd1bbc812e663b4\",\"license\":\"MIT\"},\"contracts/interfaces/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity >=0.5.0;\\n\\ninterface IERC20 {\\n    event Approval(address indexed owner, address indexed spender, uint value);\\n    event Transfer(address indexed from, address indexed to, uint value);\\n\\n    function name() external view returns (string memory);\\n\\n    function symbol() external view returns (string memory);\\n\\n    function decimals() external view returns (uint8);\\n\\n    function totalSupply() external view returns (uint);\\n\\n    function balanceOf(address owner) external view returns (uint);\\n\\n    function allowance(address owner, address spender) external view returns (uint);\\n\\n    function approve(address spender, uint value) external returns (bool);\\n\\n    function transfer(address to, uint value) external returns (bool);\\n\\n    function transferFrom(address from, address to, uint value) external returns (bool);\\n}\\n\",\"keccak256\":\"0x28b0e3104ddb60adddef3c545654df69f0c02b497448d49a620bce9d128dfd30\",\"license\":\"GPL-3.0\"},\"contracts/libraries/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (utils/Context.sol)\\n\\npragma solidity >=0.8.7;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n}\\n\",\"keccak256\":\"0xe515ff86f8f077d987d8b21bc28616f77b06177cfe98b044f91233a9f40dae03\",\"license\":\"MIT\"},\"contracts/libraries/Pausable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (utils/Pausable.sol)\\n\\npragma solidity >=0.8.7;\\n\\nimport {Context} from \\\"./Context.sol\\\";\\n\\n/**\\n * @dev Contract module which allows children to implement an emergency stop\\n * mechanism that can be triggered by an authorized account.\\n *\\n * This module is used through inheritance. It will make available the\\n * modifiers `whenNotPaused` and `whenPaused`, which can be applied to\\n * the functions of your contract. Note that they will not be pausable by\\n * simply including this module, only once the modifiers are put in place.\\n */\\nabstract contract Pausable is Context {\\n    bool private _paused;\\n\\n    /**\\n     * @dev Emitted when the pause is triggered by `account`.\\n     */\\n    event Paused(address account);\\n\\n    /**\\n     * @dev Emitted when the pause is lifted by `account`.\\n     */\\n    event Unpaused(address account);\\n\\n    /**\\n     * @dev The operation failed because the contract is paused.\\n     */\\n    error EnforcedPause();\\n\\n    /**\\n     * @dev The operation failed because the contract is not paused.\\n     */\\n    error ExpectedPause();\\n\\n    /**\\n     * @dev Initializes the contract in unpaused state.\\n     */\\n    constructor() {\\n        _paused = false;\\n    }\\n\\n    /**\\n     * @dev Modifier to make a function callable only when the contract is not paused.\\n     *\\n     * Requirements:\\n     *\\n     * - The contract must not be paused.\\n     */\\n    modifier whenNotPaused() {\\n        _requireNotPaused();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Modifier to make a function callable only when the contract is paused.\\n     *\\n     * Requirements:\\n     *\\n     * - The contract must be paused.\\n     */\\n    modifier whenPaused() {\\n        _requirePaused();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns true if the contract is paused, and false otherwise.\\n     */\\n    function paused() public view virtual returns (bool) {\\n        return _paused;\\n    }\\n\\n    /**\\n     * @dev Throws if the contract is paused.\\n     */\\n    function _requireNotPaused() internal view virtual {\\n        if (paused()) {\\n            revert EnforcedPause();\\n        }\\n    }\\n\\n    /**\\n     * @dev Throws if the contract is not paused.\\n     */\\n    function _requirePaused() internal view virtual {\\n        if (!paused()) {\\n            revert ExpectedPause();\\n        }\\n    }\\n\\n    /**\\n     * @dev Triggers stopped state.\\n     *\\n     * Requirements:\\n     *\\n     * - The contract must not be paused.\\n     */\\n    function _pause() internal virtual whenNotPaused {\\n        _paused = true;\\n        emit Paused(_msgSender());\\n    }\\n\\n    /**\\n     * @dev Returns to normal state.\\n     *\\n     * Requirements:\\n     *\\n     * - The contract must be paused.\\n     */\\n    function _unpause() internal virtual whenPaused {\\n        _paused = false;\\n        emit Unpaused(_msgSender());\\n    }\\n}\\n\",\"keccak256\":\"0xe98439c725e5f37787eebdaf5a65f840002dc37f44e408e284d3875557ab9735\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50604051610d9b380380610d9b83398101604081905261002f916100fb565b6000805460ff191690558282826001600160a01b038316158061005957506001600160a01b038216155b8061006b57506001600160a01b038116155b156100895760405163e6c4247b60e01b815260040160405180910390fd5b600180546001600160a01b039485166001600160a01b031991821617909155600280549385169390911692909217909155600080549190921661010002610100600160a81b03199091161790555061013e915050565b80516001600160a01b03811681146100f657600080fd5b919050565b60008060006060848603121561011057600080fd5b610119846100df565b9250610127602085016100df565b9150610135604085016100df565b90509250925092565b610c4e8061014d6000396000f3fe608060405234801561001057600080fd5b50600436106100b45760003560e01c8063738f4c4311610071578063738f4c4314610142578063779e3b63146101555780638456cb591461015d5780639122c34414610165578063d42ae69714610178578063f7fb869b1461018b57600080fd5b8063328a01d0146100b95780633f4ba83a146100e95780635b112591146100f35780635c975abb146101065780636128480f1461011c57806368a360b61461012f575b600080fd5b6002546100cc906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b6100f16101a3565b005b6001546100cc906001600160a01b031681565b60005460ff1660405190151581526020016100e0565b6100f161012a36600461085f565b6101e4565b6100f161013d3660046108ca565b6102a1565b6100f161015036600461094b565b6103f9565b6100f1610548565b6100f16105fc565b6100f161017336600461085f565b610636565b6100f16101863660046109c2565b6106f8565b6000546100cc9061010090046001600160a01b031681565b60005461010090046001600160a01b031633146101da57604051634677a0d360e01b81523360048201526024015b60405180910390fd5b6101e2610772565b565b60005461010090046001600160a01b0316331461021657604051634677a0d360e01b81523360048201526024016101d1565b6001600160a01b03811661023d5760405163e6c4247b60e01b815260040160405180910390fd5b60008054610100600160a81b0319166101006001600160a01b038416908102919091179091556040805133815260208101929092527fd41d83655d484bdf299598751c371b2d92088667266fe3774b25a97bdd5d039791015b60405180910390a150565b6102a96107bf565b6001546001600160a01b031633146102d95760405160016247a98f60e11b031981523360048201526024016101d1565b81156103af57866001600160a01b0316636e66e10d6040518060a001604052808a6001600160a01b03168152602001898152602001886001600160a01b0316815260200187815260200186868080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525050509152506040516001600160e01b031960e084901b16815261037c9190600401610a4a565b600060405180830381600087803b15801561039657600080fd5b505af11580156103aa573d6000803e3d6000fd5b505050505b80847f8c9efa6d2d1300da1bf475fc3c3f8a8a322b9b451714fc898f34001f1314cae089898988886040516103e8959493929190610aca565b60405180910390a350505050505050565b6001546001600160a01b031633146104295760405160016247a98f60e11b031981523360048201526024016101d1565b81156104f957836001600160a01b031663358e83056040518060800160405280896001600160a01b03168152602001888152602001876001600160a01b0316815260200186868080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525050509152506040516001600160e01b031960e084901b1681526104c69190600401610b09565b600060405180830381600087803b1580156104e057600080fd5b505af11580156104f4573d6000803e3d6000fd5b505050505b80846001600160a01b0316867f3b648f0b5d16d0c42a02921d82d9ea47ae4a14fad809c9d0acdccdb78b90089389878760405161053893929190610b4e565b60405180910390a4505050505050565b6002546001600160a01b03163314610575576040516373803b2f60e11b81523360048201526024016101d1565b6001546001600160a01b031661059e5760405163e6c4247b60e01b815260040160405180910390fd5b600154600280546001600160a01b0319166001600160a01b0390921691821790556040805133815260208101929092527f5104c9abdc7d111c2aeb4ce890ac70274a4be2ee83f46a62551be5e6ebc82dd091015b60405180910390a1565b60005461010090046001600160a01b0316331461062e57604051634677a0d360e01b81523360048201526024016101d1565b6101e26107e3565b6001546001600160a01b0316331480159061065c57506002546001600160a01b03163314155b1561067c5760405163cdfcef9760e01b81523360048201526024016101d1565b6001600160a01b0381166106a35760405163e6c4247b60e01b815260040160405180910390fd5b600180546001600160a01b0319166001600160a01b0383169081179091556040805133815260208101929092527fe79965b5c67dcfb2cf5fe152715e4a7256cee62a3d5dd8484fd8a8539eb8beff9101610296565b6107006107bf565b8035337f5b597f6fee9cb6d502de7253fc9d6cd9ca476deb484015b3026c58efbb350b1b32610735604086016020870161085f565b60408601356107476060880188610b7c565b61075460808a018a610b7c565b6040516107679796959493929190610bc3565b60405180910390a350565b61077a610820565b6000805460ff191690557f5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa335b6040516001600160a01b0390911681526020016105f2565b60005460ff16156101e25760405163d93c066560e01b815260040160405180910390fd5b6107eb6107bf565b6000805460ff191660011790557f62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a2586107a73390565b60005460ff166101e257604051638dfc202b60e01b815260040160405180910390fd5b80356001600160a01b038116811461085a57600080fd5b919050565b60006020828403121561087157600080fd5b61087a82610843565b9392505050565b60008083601f84011261089357600080fd5b50813567ffffffffffffffff8111156108ab57600080fd5b6020830191508360208285010111156108c357600080fd5b9250929050565b600080600080600080600060c0888a0312156108e557600080fd5b6108ee88610843565b96506020880135955061090360408901610843565b945060608801359350608088013567ffffffffffffffff81111561092657600080fd5b6109328a828b01610881565b989b979a5095989497959660a090950135949350505050565b60008060008060008060a0878903121561096457600080fd5b61096d87610843565b95506020870135945061098260408801610843565b9350606087013567ffffffffffffffff81111561099e57600080fd5b6109aa89828a01610881565b979a9699509497949695608090950135949350505050565b6000602082840312156109d457600080fd5b813567ffffffffffffffff8111156109eb57600080fd5b820160a0818503121561087a57600080fd5b6000815180845260005b81811015610a2357602081850181015186830182015201610a07565b81811115610a35576000602083870101525b50601f01601f19169290920160200192915050565b60208152600060018060a01b03808451166020840152602084015160408401528060408501511660608401525060608301516080830152608083015160a080840152610a9960c08401826109fd565b949350505050565b81835281816020850137506000828201602090810191909152601f909101601f19169091010190565b6001600160a01b0386811682526020820186905284166040820152608060608201819052600090610afe9083018486610aa1565b979650505050505050565b60208152600060018060a01b0380845116602084015260208401516040840152806040850151166060840152506060830151608080840152610a9960a08401826109fd565b6001600160a01b0384168152604060208201819052600090610b739083018486610aa1565b95945050505050565b6000808335601e19843603018112610b9357600080fd5b83018035915067ffffffffffffffff821115610bae57600080fd5b6020019150368190038213156108c357600080fd5b6001600160a01b038881168252871660208201526040810186905260a060608201819052600090610bf79083018688610aa1565b8281036080840152610c0a818587610aa1565b9a995050505050505050505056fea264697066735822122061d039951d5724105aae618d538b2f52b43c09e4a09a86e1db6446f4c0da236864736f6c63430008090033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100b45760003560e01c8063738f4c4311610071578063738f4c4314610142578063779e3b63146101555780638456cb591461015d5780639122c34414610165578063d42ae69714610178578063f7fb869b1461018b57600080fd5b8063328a01d0146100b95780633f4ba83a146100e95780635b112591146100f35780635c975abb146101065780636128480f1461011c57806368a360b61461012f575b600080fd5b6002546100cc906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b6100f16101a3565b005b6001546100cc906001600160a01b031681565b60005460ff1660405190151581526020016100e0565b6100f161012a36600461085f565b6101e4565b6100f161013d3660046108ca565b6102a1565b6100f161015036600461094b565b6103f9565b6100f1610548565b6100f16105fc565b6100f161017336600461085f565b610636565b6100f16101863660046109c2565b6106f8565b6000546100cc9061010090046001600160a01b031681565b60005461010090046001600160a01b031633146101da57604051634677a0d360e01b81523360048201526024015b60405180910390fd5b6101e2610772565b565b60005461010090046001600160a01b0316331461021657604051634677a0d360e01b81523360048201526024016101d1565b6001600160a01b03811661023d5760405163e6c4247b60e01b815260040160405180910390fd5b60008054610100600160a81b0319166101006001600160a01b038416908102919091179091556040805133815260208101929092527fd41d83655d484bdf299598751c371b2d92088667266fe3774b25a97bdd5d039791015b60405180910390a150565b6102a96107bf565b6001546001600160a01b031633146102d95760405160016247a98f60e11b031981523360048201526024016101d1565b81156103af57866001600160a01b0316636e66e10d6040518060a001604052808a6001600160a01b03168152602001898152602001886001600160a01b0316815260200187815260200186868080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525050509152506040516001600160e01b031960e084901b16815261037c9190600401610a4a565b600060405180830381600087803b15801561039657600080fd5b505af11580156103aa573d6000803e3d6000fd5b505050505b80847f8c9efa6d2d1300da1bf475fc3c3f8a8a322b9b451714fc898f34001f1314cae089898988886040516103e8959493929190610aca565b60405180910390a350505050505050565b6001546001600160a01b031633146104295760405160016247a98f60e11b031981523360048201526024016101d1565b81156104f957836001600160a01b031663358e83056040518060800160405280896001600160a01b03168152602001888152602001876001600160a01b0316815260200186868080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525050509152506040516001600160e01b031960e084901b1681526104c69190600401610b09565b600060405180830381600087803b1580156104e057600080fd5b505af11580156104f4573d6000803e3d6000fd5b505050505b80846001600160a01b0316867f3b648f0b5d16d0c42a02921d82d9ea47ae4a14fad809c9d0acdccdb78b90089389878760405161053893929190610b4e565b60405180910390a4505050505050565b6002546001600160a01b03163314610575576040516373803b2f60e11b81523360048201526024016101d1565b6001546001600160a01b031661059e5760405163e6c4247b60e01b815260040160405180910390fd5b600154600280546001600160a01b0319166001600160a01b0390921691821790556040805133815260208101929092527f5104c9abdc7d111c2aeb4ce890ac70274a4be2ee83f46a62551be5e6ebc82dd091015b60405180910390a1565b60005461010090046001600160a01b0316331461062e57604051634677a0d360e01b81523360048201526024016101d1565b6101e26107e3565b6001546001600160a01b0316331480159061065c57506002546001600160a01b03163314155b1561067c5760405163cdfcef9760e01b81523360048201526024016101d1565b6001600160a01b0381166106a35760405163e6c4247b60e01b815260040160405180910390fd5b600180546001600160a01b0319166001600160a01b0383169081179091556040805133815260208101929092527fe79965b5c67dcfb2cf5fe152715e4a7256cee62a3d5dd8484fd8a8539eb8beff9101610296565b6107006107bf565b8035337f5b597f6fee9cb6d502de7253fc9d6cd9ca476deb484015b3026c58efbb350b1b32610735604086016020870161085f565b60408601356107476060880188610b7c565b61075460808a018a610b7c565b6040516107679796959493929190610bc3565b60405180910390a350565b61077a610820565b6000805460ff191690557f5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa335b6040516001600160a01b0390911681526020016105f2565b60005460ff16156101e25760405163d93c066560e01b815260040160405180910390fd5b6107eb6107bf565b6000805460ff191660011790557f62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a2586107a73390565b60005460ff166101e257604051638dfc202b60e01b815260040160405180910390fd5b80356001600160a01b038116811461085a57600080fd5b919050565b60006020828403121561087157600080fd5b61087a82610843565b9392505050565b60008083601f84011261089357600080fd5b50813567ffffffffffffffff8111156108ab57600080fd5b6020830191508360208285010111156108c357600080fd5b9250929050565b600080600080600080600060c0888a0312156108e557600080fd5b6108ee88610843565b96506020880135955061090360408901610843565b945060608801359350608088013567ffffffffffffffff81111561092657600080fd5b6109328a828b01610881565b989b979a5095989497959660a090950135949350505050565b60008060008060008060a0878903121561096457600080fd5b61096d87610843565b95506020870135945061098260408801610843565b9350606087013567ffffffffffffffff81111561099e57600080fd5b6109aa89828a01610881565b979a9699509497949695608090950135949350505050565b6000602082840312156109d457600080fd5b813567ffffffffffffffff8111156109eb57600080fd5b820160a0818503121561087a57600080fd5b6000815180845260005b81811015610a2357602081850181015186830182015201610a07565b81811115610a35576000602083870101525b50601f01601f19169290920160200192915050565b60208152600060018060a01b03808451166020840152602084015160408401528060408501511660608401525060608301516080830152608083015160a080840152610a9960c08401826109fd565b949350505050565b81835281816020850137506000828201602090810191909152601f909101601f19169091010190565b6001600160a01b0386811682526020820186905284166040820152608060608201819052600090610afe9083018486610aa1565b979650505050505050565b60208152600060018060a01b0380845116602084015260208401516040840152806040850151166060840152506060830151608080840152610a9960a08401826109fd565b6001600160a01b0384168152604060208201819052600090610b739083018486610aa1565b95945050505050565b6000808335601e19843603018112610b9357600080fd5b83018035915067ffffffffffffffff821115610bae57600080fd5b6020019150368190038213156108c357600080fd5b6001600160a01b038881168252871660208201526040810186905260a060608201819052600090610bf79083018688610aa1565b8281036080840152610c0a818587610aa1565b9a995050505050505050505056fea264697066735822122061d039951d5724105aae618d538b2f52b43c09e4a09a86e1db6446f4c0da236864736f6c63430008090033",
+  "devdoc": {
+    "details": "ETH implementation of CarrotBridgeConnector. This contract manages interactions between TSS and different chains.",
+    "errors": {
+      "EnforcedPause()": [
+        {
+          "details": "The operation failed because the contract is paused."
+        }
+      ],
+      "ExpectedPause()": [
+        {
+          "details": "The operation failed because the contract is not paused."
+        }
+      ]
+    },
+    "kind": "dev",
+    "methods": {
+      "onReceive(address,uint256,address,bytes,bytes32)": {
+        "details": "Handler to receive data from other chain. This method can be called only by TSS."
+      },
+      "onRevert(address,uint256,address,uint256,bytes,bytes32)": {
+        "details": "Handler to receive errors from other chain. This method can be called only by TSS."
+      },
+      "pause()": {
+        "details": "Pause the input (send) transactions."
+      },
+      "paused()": {
+        "details": "Returns true if the contract is paused, and false otherwise."
+      },
+      "renounceTssAddressUpdater()": {
+        "details": "Changes the ownership of tssAddressUpdater to be the one held by the CarrotBridge TSS Signer nodes."
+      },
+      "send((uint256,address,uint256,bytes,bytes))": {
+        "details": "Entrypoint to send data through CarrotBridge This call locks the token on the contract and emits an event with all the data needed by the protocol."
+      },
+      "unpause()": {
+        "details": "Unpause the contract to allow transactions again."
+      },
+      "updatePauserAddress(address)": {
+        "details": "Update the pauser address. The only address allowed to do that is the current pauser."
+      },
+      "updateTssAddress(address)": {
+        "details": "Update the TSS address. The address can be updated by the TSS updater or the TSS address itself."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 1016,
+        "contract": "contracts/CarrotBridgeConnector.non-fee.sol:CarrotBridgeConnectorNonFee",
+        "label": "_paused",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_bool"
+      },
+      {
+        "astId": 12,
+        "contract": "contracts/CarrotBridgeConnector.non-fee.sol:CarrotBridgeConnectorNonFee",
+        "label": "pauserAddress",
+        "offset": 1,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 15,
+        "contract": "contracts/CarrotBridgeConnector.non-fee.sol:CarrotBridgeConnectorNonFee",
+        "label": "tssAddress",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      },
+      {
+        "astId": 18,
+        "contract": "contracts/CarrotBridgeConnector.non-fee.sol:CarrotBridgeConnectorNonFee",
+        "label": "tssAddressUpdater",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      }
+    }
+  }
+}

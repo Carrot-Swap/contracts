@@ -7,6 +7,9 @@ typechain-types
 .idea
 .openzeppelin
 
+bin
+obj
+
 #Hardhat files
 cache
 artifacts

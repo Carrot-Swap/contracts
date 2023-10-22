@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <NeoContractName>$(AssemblyName)</NeoContractName>
+    <Nullable>enable</Nullable>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <ProjectReference Include="..\CarrotBridgeInteractor\CarrotBridgeInteractor.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="$(neon3) $(ProjectDir)" />
+  </Target>
+  
+</Project>
