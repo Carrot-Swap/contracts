@@ -4,11 +4,12 @@ pragma solidity >=0.8.7;
 import "./libraries/Ownable.sol";
 import "./interfaces/CarrotBridgeInterfaces.sol";
 import "./interfaces/CarrotBridgeInteractorErrors.sol";
+import "./CarrotBridgeConnector.base.sol";
 
 abstract contract CarrotBridgeInteractor is Ownable, CarrotBridgeInteractorErrors {
     bytes32 constant ZERO_BYTES = keccak256(new bytes(0));
     uint256 internal immutable currentChainId;
-    CarrotBridgeConnector public immutable connector;
+    CarrotBridgeConnectorBase public immutable connector;
 
     /**
      * @dev Maps a chain id to its corresponding address of the MultiChainSwap contract
@@ -17,14 +18,12 @@ abstract contract CarrotBridgeInteractor is Ownable, CarrotBridgeInteractorError
      *  - Given a chain id, the contract is able to route a transaction to its corresponding address
      *  - To check that the messages (onBridgeMessage, onBridgeRevert) come from a trusted source
      */
-    mapping(uint256 => bytes) public interactorsByChainId;
+    mapping(uint256 => address) public interactorsByChainId;
 
     modifier isValidMessageCall(CarrotBridgeInterfaces.BridgeMessage calldata bridgeMessage) {
         _isValidCaller();
-        if (
-            keccak256(bridgeMessage.txSenderAddress) !=
-            keccak256(interactorsByChainId[bridgeMessage.sourceChainId])
-        ) revert InvalidBridgeMessageCall();
+        if ((bridgeMessage.txSenderAddress) != (interactorsByChainId[bridgeMessage.sourceChainId]))
+            revert InvalidBridgeMessageCall();
         _;
     }
 
@@ -38,7 +37,7 @@ abstract contract CarrotBridgeInteractor is Ownable, CarrotBridgeInteractorError
     constructor(address carrotBridgeConnectorAddress) {
         if (carrotBridgeConnectorAddress == address(0)) revert CommonErrors.InvalidAddress();
         currentChainId = block.chainid;
-        connector = CarrotBridgeConnector(carrotBridgeConnectorAddress);
+        connector = CarrotBridgeConnectorBase(carrotBridgeConnectorAddress);
     }
 
     function _isValidCaller() private view {
@@ -49,12 +48,12 @@ abstract contract CarrotBridgeInteractor is Ownable, CarrotBridgeInteractorError
      * @dev Useful for contracts that inherit from this one
      */
     function _isValidChainId(uint256 chainId) internal view returns (bool) {
-        return (keccak256(interactorsByChainId[chainId]) != ZERO_BYTES);
+        return ((interactorsByChainId[chainId]) != address(0));
     }
 
     function setInteractorByChainId(
         uint256 destinationChainId,
-        bytes calldata contractAddress
+        address contractAddress
     ) external onlyOwner {
         interactorsByChainId[destinationChainId] = contractAddress;
     }

@@ -16,6 +16,9 @@
     "deploy": "hardhat run scripts/deploy.ts --network ",
     "deploy:neo:testnet": "yarn hardhat deploy --tags testnet --network neo_testnet",
     "deploy:zeta:testnet": "yarn hardhat deploy --tags testnet --network zeta_athens",
+    "deploy:polygon:testnet": "yarn hardhat deploy --tags testnet --network polygon_mumbai",
+    "deploy:ethereum:testnet": "yarn hardhat deploy --tags testnet --network eth_goril",
+    "deploy:bnb:testnet": "yarn hardhat deploy --tags testnet --network bnb_testnet",
     "verify": "hardhat run scripts/verify.ts --network"
   },
   "devDependencies": {

@@ -99,7 +99,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@carrot-swap/bridge-evm@workspace:packages/evm/bridge":
+"@carrot-swap/bridge-evm@*, @carrot-swap/bridge-evm@workspace:packages/evm/bridge":
   version: 0.0.0-use.local
   resolution: "@carrot-swap/bridge-evm@workspace:packages/evm/bridge"
   dependencies:
@@ -227,6 +227,33 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@carrot-swap/token-bridge@workspace:packages/evm/token-bridge":
+  version: 0.0.0-use.local
+  resolution: "@carrot-swap/token-bridge@workspace:packages/evm/token-bridge"
+  dependencies:
+    "@carrot-swap/bridge-evm": "*"
+    "@nomicfoundation/hardhat-toolbox": ^2.0.2
+    "@nomiclabs/hardhat-ethers": ^2.2.3
+    "@nomiclabs/hardhat-waffle": ^2.0.1
+    "@openzeppelin/contracts": 3.4.2-solc-0.7
+    "@openzeppelin/contracts-upgradeable": 3.4.2-solc-0.7
+    "@openzeppelin/hardhat-upgrades": ^1.22.1
+    "@typechain/ethers-v5": ^7.2.0
+    "@typechain/hardhat": ^2.3.1
+    "@uniswap/lib": 4.0.1-alpha
+    base64-sol: 1.1.0
+    dotenv: ^16.0.3
+    hardhat: ^2.9.3
+    hardhat-abi-exporter: ^2.2.0
+    hardhat-contract-sizer: ^2.6.1
+    hardhat-deploy: ^0.9.27
+    hardhat-gas-reporter: ^1.0.4
+    hardhat-interface-generator: ^0.0.6
+    solidity-coverage: ^0.7.17
+    typechain: ^5.2.0
+  languageName: unknown
+  linkType: soft
+
 "@carrot-swap/uniswap-v2@workspace:packages/evm/uniswap-v2":
   version: 0.0.0-use.local
   resolution: "@carrot-swap/uniswap-v2@workspace:packages/evm/uniswap-v2"
@@ -281,9 +308,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@carrpt-swap/bridge-n3@workspace:packages/n3"
   dependencies:
-    "@cityofzion/neon-api": 5.2.2
+    "@cityofzion/neon-api": ^5.4.0
     "@cityofzion/neon-core": ^5.5.1
-    "@cityofzion/neon-js": 5.3.0
+    "@cityofzion/neon-js": ^5.5.1
     "@types/node": ^18.11.15
     dotenv: ^16.3.1
     ts-node: ^10.9.1
@@ -337,16 +364,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cityofzion/neon-api@npm:5.2.2":
-  version: 5.2.2
-  resolution: "@cityofzion/neon-api@npm:5.2.2"
-  peerDependencies:
-    "@cityofzion/neon-core": ^5.0.0
-  checksum: a0dc43abd7d69e6a5f4167e9c2876bf71f7325c6e0931832d363827704a0a337b3d0068dbfecd11cf530a9588b0919b8ed65f9fb824084e730b3cf24d8d9b212
-  languageName: node
-  linkType: hard
-
-"@cityofzion/neon-api@npm:^5.2.2":
+"@cityofzion/neon-api@npm:^5.4.0":
   version: 5.4.0
   resolution: "@cityofzion/neon-api@npm:5.4.0"
   peerDependencies:
@@ -355,7 +373,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cityofzion/neon-core@npm:^5.3.0, @cityofzion/neon-core@npm:^5.5.1":
+"@cityofzion/neon-core@npm:^5.5.1":
   version: 5.5.1
   resolution: "@cityofzion/neon-core@npm:5.5.1"
   dependencies:
@@ -373,13 +391,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cityofzion/neon-js@npm:5.3.0":
-  version: 5.3.0
-  resolution: "@cityofzion/neon-js@npm:5.3.0"
+"@cityofzion/neon-js@npm:^5.5.1":
+  version: 5.5.1
+  resolution: "@cityofzion/neon-js@npm:5.5.1"
   dependencies:
-    "@cityofzion/neon-api": ^5.2.2
-    "@cityofzion/neon-core": ^5.3.0
-  checksum: d8ab9a4aff10a027edcffcdac235192b4df605bbaa5e26b891a83e121b5db2b31e169b6a371c10e6153a9a7214773e52f71d58af7d5017627779a17900cd68e0
+    "@cityofzion/neon-api": ^5.4.0
+    "@cityofzion/neon-core": ^5.5.1
+  checksum: fd5bc7d1a3530a983ab3fa5a2792b3584025b3baa77b5bdbc81b95965e46df5b609691318e043b8bb025cf161ccc45758eca0e0371ab54c49b098519af1f7196
   languageName: node
   linkType: hard
 

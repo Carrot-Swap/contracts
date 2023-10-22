@@ -21,7 +21,7 @@ export const MOCK_TOKENS: Record<string, Token> = {
     symbol: "USDC",
     decimals: 6,
   },
-  bNEO: {
+  BNEO: {
     name: "NEO Burger",
     symbol: "bNEO",
     decimals: 18,
@@ -31,6 +31,11 @@ export const MOCK_TOKENS: Record<string, Token> = {
     symbol: "GAS",
     decimals: 18,
     isNative: true,
+  },
+  MATIC: {
+    name: "MATIC",
+    symbol: "MATIC",
+    decimals: 18,
   },
 };
 
@@ -54,5 +59,9 @@ export const PAIRS = [
   {
     token1: { symbol: "GAS", amount: "1000000000000000000000" },
     token2: { symbol: "USDT", amount: "2400000000" },
+  },
+  {
+    token1: { symbol: "MATIC", amount: 1 * 1e18 * 1000 },
+    token2: { symbol: "USDT", amount: 0.5764 * 1e6 * 100000 },
   },
 ];

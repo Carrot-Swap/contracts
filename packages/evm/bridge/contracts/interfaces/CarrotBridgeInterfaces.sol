@@ -9,7 +9,7 @@ interface CarrotBridgeInterfaces {
         /// @dev Chain id of the destination chain.
         uint256 destinationChainId;
         /// @dev Address receiving the message on the destination chain (expressed in bytes since it can be non-EVM)
-        bytes destinationAddress;
+        address destinationAddress;
         /// @dev Gas limit for the destination chain's transaction
         uint256 destinationGasLimit;
         /// @dev An encoded, arbitrary message to be parsed by the destination contract
@@ -22,7 +22,7 @@ interface CarrotBridgeInterfaces {
      * @dev Our Connector calls onBridgeMessage with this struct as argument
      */
     struct BridgeMessage {
-        bytes txSenderAddress;
+        address txSenderAddress;
         uint256 sourceChainId;
         address destinationAddress;
         bytes message;
@@ -34,7 +34,7 @@ interface CarrotBridgeInterfaces {
     struct BridgeRevert {
         address txSenderAddress;
         uint256 sourceChainId;
-        bytes destinationAddress;
+        address destinationAddress;
         uint256 destinationChainId;
         bytes message;
     }

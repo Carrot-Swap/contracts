@@ -6,7 +6,7 @@ export async function deployTokenBridge(
   currentChainId: number
 ) {
   const deployer = getDeployer();
-  const bridge = await deploy("TokenBridge", { name: "Test4" });
+  const bridge = await deploy("TokenBridge", { name: "Test6" });
   const res = await bridge.contract.call("connectorAddress");
   if (!!res.getValue()) {
     return bridge;
@@ -15,6 +15,9 @@ export async function deployTokenBridge(
     deployer.address,
     connectorAddress,
     currentChainId,
+  ]);
+  await bridge.contract.invoke("setEVMInteractorAddress", [
+    "NU7LRUDw7xoPFHiytzp7JFN2JRKq4FPbj7",
   ]);
   return bridge;
 }

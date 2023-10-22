@@ -39,7 +39,7 @@ contract CarrotBridgeConnectorNonFee is CarrotBridgeConnectorBase {
      * This method can be called only by TSS.
      */
     function onReceive(
-        bytes calldata txSenderAddress,
+        address txSenderAddress,
         uint256 sourceChainId,
         address destinationAddress,
         bytes calldata message,
@@ -72,7 +72,7 @@ contract CarrotBridgeConnectorNonFee is CarrotBridgeConnectorBase {
     function onRevert(
         address txSenderAddress,
         uint256 sourceChainId,
-        bytes calldata destinationAddress,
+        address destinationAddress,
         uint256 destinationChainId,
         bytes calldata message,
         bytes32 internalSendHash

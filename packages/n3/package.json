@@ -19,9 +19,9 @@
   },
   "homepage": "https://github.com/my-muffin/my-muffin-contract#readme",
   "devDependencies": {
-    "@cityofzion/neon-api": "5.2.2",
+    "@cityofzion/neon-api": "^5.4.0",
     "@cityofzion/neon-core": "^5.5.1",
-    "@cityofzion/neon-js": "5.3.0",
+    "@cityofzion/neon-js": "^5.5.1",
     "@types/node": "^18.11.15",
     "dotenv": "^16.3.1",
     "ts-node": "^10.9.1",

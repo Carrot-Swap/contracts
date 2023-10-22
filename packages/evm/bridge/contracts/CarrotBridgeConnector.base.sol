@@ -32,14 +32,14 @@ contract CarrotBridgeConnectorBase is ConnectorErrors, Pausable {
         address sourceTxOriginAddress,
         address indexed bridgeTxSenderAddress,
         uint256 indexed destinationChainId,
-        bytes destinationAddress,
+        address destinationAddress,
         uint256 destinationGasLimit,
         bytes message,
         bytes bridgeParams
     );
 
     event BridgeMessageReceived(
-        bytes bridgeTxSenderAddress,
+        address bridgeTxSenderAddress,
         uint256 indexed sourceChainId,
         address indexed destinationAddress,
         bytes message,
@@ -50,7 +50,7 @@ contract CarrotBridgeConnectorBase is ConnectorErrors, Pausable {
         address bridgeTxSenderAddress,
         uint256 sourceChainId,
         uint256 indexed destinationChainId,
-        bytes destinationAddress,
+        address destinationAddress,
         bytes message,
         bytes32 indexed internalSendHash
     );
@@ -162,7 +162,7 @@ contract CarrotBridgeConnectorBase is ConnectorErrors, Pausable {
      * This method can be called only by TSS. Access validation is in implementation.
      */
     function onReceive(
-        bytes calldata bridgeTxSenderAddress,
+        address bridgeTxSenderAddress,
         uint256 sourceChainId,
         address destinationAddress,
         bytes calldata message,
@@ -176,7 +176,7 @@ contract CarrotBridgeConnectorBase is ConnectorErrors, Pausable {
     function onRevert(
         address bridgeTxSenderAddress,
         uint256 sourceChainId,
-        bytes calldata destinationAddress,
+        address destinationAddress,
         uint256 destinationChainId,
         bytes calldata message,
         bytes32 internalSendHash

@@ -5,6 +5,8 @@ using Neo;
 using System.Numerics;
 using Carrot.ABI;
 using Carrot.Bridge.Base;
+using static Neo.SmartContract.Framework.ExecutionEngine;
+using Neo.SmartContract.Framework.Native;
 
 namespace Carrot.TokenBridge
 {
@@ -17,21 +19,40 @@ namespace Carrot.TokenBridge
   {
     private static CoreStorage storage = new CoreStorage(new byte[] { 0x01 });
 
-    public static void send(UInt160 user, BigInteger destinationChainId, UInt160 destinationAddress, BigInteger tokenId, BigInteger amount)
+    [Safe]
+    public static UInt160 evmInteractorAddress() => (UInt160)storage.get("evmInteractorAddress", UInt160.Zero);
+
+    public static void setEVMInteractorAddress(UInt160 address)
     {
+      Assert(isOwner(), "Permission Denied");
+      storage.getStorage().Put("evmInteractorAddress", address);
+    }
+
+    public static void OnNEP17Payment(UInt160 from, BigInteger amount, object data)
+    {
+      Assert(evmInteractorAddress() != UInt160.Zero, "EVM interactor address is zero");
+      Assert(NEO.Hash == Runtime.CallingScriptHash, "token not in whitelist");
+      var total = (BigInteger)storage.getReadOnlyStorage().Get(from);
+      storage.getStorage().Put(from, total + amount);
+    }
+
+    public static void send(UInt160 sender, UInt160 to)
+    {
+      Assert(Runtime.CheckWitness(sender), "Invalid request");
+      var total = (BigInteger)storage.getReadOnlyStorage().Get(sender);
+      storage.getStorage().Put(sender, (BigInteger)0);
+
       var message = new ABIBuilder()
-            .add(user)
-            .add(destinationChainId)
-            .add(destinationAddress)
-            .add(tokenId)
-            .add(amount)
+            .add(894710606)
+            .add(to)
+            .add(total * BigInteger.Pow(10, 18))
             .build();
 
       sendBridgeMessage(
         Runtime.EntryScriptHash,
         Runtime.ExecutingScriptHash,
-        destinationChainId,
-        destinationAddress,
+        894710606,
+        evmInteractorAddress(),
         0,
         message,
         null);
