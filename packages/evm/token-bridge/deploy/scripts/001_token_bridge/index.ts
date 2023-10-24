@@ -26,7 +26,7 @@ const func = async function (hre: HardhatRuntimeEnvironment) {
 
   const tokenAddresses = TOKEN_ADDRESSES[hre.network.name];
   for (const [id, address] of Object.entries(tokenAddresses)) {
-    console.log("set token", address);
+    console.log("set token", id, address);
     await contract.setToken(id, address);
   }
 

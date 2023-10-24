@@ -46,5 +46,6 @@ export const hardhatBaseConfig = {
   },
   namedAccounts: {
     deployer: 0,
+    tssUpdater: 0,
   },
 };
