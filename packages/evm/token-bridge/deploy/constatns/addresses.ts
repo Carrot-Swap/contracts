@@ -10,8 +10,8 @@ export const CONNECTOR_ADDRESSES: Record<string, string> = {
   neo_n3_testnet: "0x1ecde43d0f1665f21c374a59078a1d882851329e",
   neo_testnet: "0xfef2e1ebcde3563F377f5B8f3B96eA85Dcd45540",
   polygon_mumbai: "0x9d0178586025Df843FD8a18B5c1DC8e44BC6d01a",
-  bnb_testnet: "0xAd0Bc3A152355CFa13b36DC953272bAD305DE7E0",
-  eth_goril: "0xAd0Bc3A152355CFa13b36DC953272bAD305DE7E0",
+  bnb_testnet: "0x00eFC3F71C0EC21ef72Eef05022A22A5Da05AA88",
+  eth_goril: "0x00eFC3F71C0EC21ef72Eef05022A22A5Da05AA88",
 };
 
 export const TOKEN_ADDRESSES: Record<string, Record<string, string>> = {
@@ -19,15 +19,18 @@ export const TOKEN_ADDRESSES: Record<string, Record<string, string>> = {
     80001: "0x1635841793eFf93c836E141e0aAf2130925D4849",
     999999: "0xe0114Bec0350947FB148007aDB8A42689b924143",
     894710606: "0xc4E8419afEfb35C057eAC4F1B721e28b9baAEc3c",
+    97: "0x8c7B63db427d141046e788634Ca6625FD2a45578",
+    5: "0xbB2cF54C82a6d4137cD88eAF8ad1805D77b3D060",
   },
   polygon_mumbai: {},
+  eth_goril: {},
+  bnb_testnet: {},
 };
 
 export const BRIDGE_ADDRESSES: Record<string, string> = {
   neo_n3_testnet: "0x92aedf18d7d4959e8ac6d19dd0924e6280b60a18",
   neo_testnet: "0xF056e7cfD3A451695FbB2E2D095bd649244Fe759",
   polygon_mumbai: "0x7e753a9f5585e67149d452F94309f490c3853A89",
-  // polygon_mumbai: "",
-  // bnb_testnet: "",
-  // eth_goril: "",
+  bnb_testnet: "0x80CF3A59be173276bcA433298449A12f22670347",
+  eth_goril: "0x80CF3A59be173276bcA433298449A12f22670347",
 };
