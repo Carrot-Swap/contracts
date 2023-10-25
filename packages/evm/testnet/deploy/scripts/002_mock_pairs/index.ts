@@ -45,7 +45,7 @@ const func = async function (hre: HardhatRuntimeEnvironment) {
       tokens
     );
 
-    const pairArtifact = await deployments.getArtifact("UniswapV2Pair");
+    const pairArtifact = await deployments.getArtifact("IUniswapV2Pair");
     const pairContract = new ethers.Contract(
       pairAddress,
       pairArtifact.abi,
