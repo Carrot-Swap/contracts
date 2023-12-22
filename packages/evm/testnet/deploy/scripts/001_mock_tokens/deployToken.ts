@@ -18,7 +18,6 @@ export async function deployToken(
   console.log(`${symbol} token is deployed(${token.address})`);
   const tokenContract = new ethers.Contract(token.address, token.abi, signer);
 
-  console.log(tokenContract.address, "totalSupply");
   const totalSupply = await tokenContract.totalSupply();
   if (totalSupply == 0) {
     const receipt = await tokenContract.mint(deployer, toUnit(100000000));

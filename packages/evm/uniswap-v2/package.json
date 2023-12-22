@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "compile": "yarn hardhat compile",
+    "deploy:mode:testnet": "yarn hardhat deploy --tags testnet --network mode_testnet",
     "deploy:neo:testnet": "yarn hardhat deploy --tags testnet --network neo_testnet",
     "deploy:zeta:testnet": "yarn hardhat deploy --tags testnet --network zeta_athens"
   },
