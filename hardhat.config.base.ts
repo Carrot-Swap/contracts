@@ -38,10 +38,22 @@ export const hardhatBaseConfig = {
       chainId: 5,
       accounts: require("./secrets.json").privateKey,
     },
+    eth_sepolia: {
+      url: "https://ethereum-sepolia.publicnode.com",
+      chainId: 11155111,
+      accounts: require("./secrets.json").privateKey,
+    },
     bnb_testnet: {
       url: "https://bsc-testnet.publicnode.com",
       chainId: 97,
       accounts: require("./secrets.json").privateKey,
+    },
+    mode_testnet: {
+      url: "https://sepolia.mode.network",
+      chainId: 919,
+      accounts: require("./secrets.json").privateKey,
+      saveDeployments: true,
+      gasPrice: 10000000000,
     },
   },
   namedAccounts: {

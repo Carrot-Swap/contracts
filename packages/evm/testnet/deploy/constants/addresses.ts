@@ -19,6 +19,10 @@ export const ADDRESSES = {
     router: "",
     factory: "",
   },
+  eth_sepolia: {
+    router: "0xC56a81e01C5375C7bebA72121c0fCAcD1F884f21",
+    factory: "0x418b9Fb1f183C6D2267A4baD31Ac4Ce56e044F71",
+  },
   bnb_testnet: {
     router: "",
     factory: "",
