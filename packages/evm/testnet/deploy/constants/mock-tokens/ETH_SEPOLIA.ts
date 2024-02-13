@@ -32,6 +32,16 @@ export const MOCK_TOKENS: Record<string, Token> = {
     symbol: "GAS",
     decimals: 18,
   },
+  MATIC: {
+    name: "MATIC",
+    symbol: "MATIC",
+    decimals: 18,
+  },
+  BNB: {
+    name: "BNB",
+    symbol: "BNB",
+    decimals: 18,
+  },
 };
 
 export const PAIRS = [
@@ -49,10 +59,18 @@ export const PAIRS = [
   },
   {
     token1: { symbol: "NEO", amount: "1000000000000000000000000" },
-    token2: { symbol: "USDT", amount: 11.6 * 1e6 * 1000000 },
+    token2: { symbol: "USDT", amount: 11.92 * 1e6 * 1000000 },
   },
   {
     token1: { symbol: "GAS", amount: "1000000000000000000000" },
-    token2: { symbol: "USDT", amount: "2400000000" },
+    token2: { symbol: "USDT", amount: 6.05 * 1e6 * 1000 },
+  },
+  {
+    token1: { symbol: "MATIC", amount: "1000000000000000000000" },
+    token2: { symbol: "USDT", amount: 0.87 * 1e6 * 100000 },
+  },
+  {
+    token1: { symbol: "BNB", amount: "1000000000000000000000" },
+    token2: { symbol: "USDC", amount: 323 * 1e6 * 100000 },
   },
 ];

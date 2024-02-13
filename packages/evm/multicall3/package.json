@@ -19,6 +19,7 @@
   "scripts": {
     "compile": "yarn hardhat compile",
     "deploy": "hardhat run scripts/deploy.ts --network ",
+    "deploy:eth:testnet": "yarn hardhat deploy --tags testnet --network eth_sepolia",
     "deploy:neo:testnet": "yarn hardhat deploy --tags testnet --network neo_testnet",
     "deploy:zeta:testnet": "yarn hardhat deploy --tags testnet --network zeta_athens",
     "deploy:mode:testnet": "yarn hardhat deploy --tags testnet --network mode_testnet",

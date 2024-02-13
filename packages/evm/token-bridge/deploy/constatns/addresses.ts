@@ -25,6 +25,13 @@ export const TOKEN_ADDRESSES: Record<string, Record<string, string>> = {
   polygon_mumbai: {},
   eth_goril: {},
   bnb_testnet: {},
+  eth_sepolia: {
+    80001: "0x1635841793eFf93c836E141e0aAf2130925D4849",
+    999999: "0xe0114Bec0350947FB148007aDB8A42689b924143",
+    894710606: "0xc4E8419afEfb35C057eAC4F1B721e28b9baAEc3c",
+    97: "0x8c7B63db427d141046e788634Ca6625FD2a45578",
+    5: "0xbB2cF54C82a6d4137cD88eAF8ad1805D77b3D060",
+  },
 };
 
 export const BRIDGE_ADDRESSES: Record<string, string> = {
