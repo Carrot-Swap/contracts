@@ -60,6 +60,9 @@ const func = async function (hre: HardhatRuntimeEnvironment) {
     }
 
     await supplyInitialLP(ethers, tokens, routerContract, deployer);
+    console.log(
+      `${pair.token1.symbol}-${pair.token2.symbol} pair deployed(${pairAddress})`
+    );
   }
 };
 

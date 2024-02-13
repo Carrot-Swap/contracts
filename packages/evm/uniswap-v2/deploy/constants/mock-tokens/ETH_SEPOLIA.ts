@@ -44,7 +44,7 @@ export const PAIRS = [
     token2: { symbol: "USDT", amount: 1 * 1e6 * 10000000 },
   },
   {
-    token1: { symbol: "WETH", amount: "1000000000000000000000" },
+    token1: { symbol: "ETH", amount: "1000000000000000000000" },
     token2: { symbol: "USDC", amount: 2450 * 1e6 * 500 },
   },
   {
