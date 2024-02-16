@@ -2,8 +2,9 @@ import { utils } from "ethers";
 
 export const AMOUNTS = {
   "0x0000000000000000000000000000000000000000": utils.parseEther("0.001"),
-  "0x448E44C7E99c6dD8337766ccDB550Da393fd4be8": utils.parseUnits("0.001", 8), //WBTC
-  "0xE2eD730beFC63f9f04f83180adf55979C0Bfe41a": utils.parseUnits("0.1", 18), //WETH
-  "0x3541B555c468ff69a36748E3930A0f6E35D3E4a6": utils.parseUnits("50", 6), //USDT
-  "0x0d20D2E505EFA9011A967BC029eF703f2CAd8723": utils.parseUnits("50", 6), //USDC
+  "0x8FE487DeEb85881B92419FCE51576d137b517b4c": utils.parseUnits("0.001", 8), // WBTC
+  "0xc3Be4c39028B9C5a9c41144942D5761789088263": utils.parseUnits("50", 6), // USDT
+  "0xF2124eF2fb12beBabC3C546411299C1Bbd82E7e6": utils.parseUnits("50", 6), // USDC
+  "0x10bB478E563936D43d83F09eE59C4B9bdaD04B71": utils.parseUnits("10", 18), // NEO
+  "0x5Ce6d37F9Bb6ec941E634A301cc41117686d65e5": utils.parseUnits("10", 18), // GAS
 };

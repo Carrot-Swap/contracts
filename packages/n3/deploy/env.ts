@@ -4,6 +4,7 @@ import { config } from "dotenv";
 config();
 
 export function getDeployer() {
+  console.log(process.env.PRIVATE_KEY);
   return new wallet.Account(process.env.PRIVATE_KEY);
 }
 

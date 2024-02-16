@@ -4,6 +4,7 @@ export const CHAIN_ID_BY_NAME: Record<string, number> = {
   polygon_mumbai: 80001,
   bnb_testnet: 97,
   eth_goril: 5,
+  eth_sepolia: 11155111,
 };
 
 export const CONNECTOR_ADDRESSES: Record<string, string> = {
@@ -12,6 +13,7 @@ export const CONNECTOR_ADDRESSES: Record<string, string> = {
   polygon_mumbai: "0x9d0178586025Df843FD8a18B5c1DC8e44BC6d01a",
   bnb_testnet: "0x00eFC3F71C0EC21ef72Eef05022A22A5Da05AA88",
   eth_goril: "0x00eFC3F71C0EC21ef72Eef05022A22A5Da05AA88",
+  eth_sepolia: "0x0149392a9EEE985F2B82B8a64213BB10159863F8",
 };
 
 export const TOKEN_ADDRESSES: Record<string, Record<string, string>> = {
@@ -26,11 +28,11 @@ export const TOKEN_ADDRESSES: Record<string, Record<string, string>> = {
   eth_goril: {},
   bnb_testnet: {},
   eth_sepolia: {
-    80001: "0x1635841793eFf93c836E141e0aAf2130925D4849",
-    999999: "0xe0114Bec0350947FB148007aDB8A42689b924143",
-    894710606: "0xc4E8419afEfb35C057eAC4F1B721e28b9baAEc3c",
-    97: "0x8c7B63db427d141046e788634Ca6625FD2a45578",
-    5: "0xbB2cF54C82a6d4137cD88eAF8ad1805D77b3D060",
+    80001: "0x1F251BA9E613143933d4251bc0520C3AB3b2a480",
+    // 999999: "0xe0114Bec0350947FB148007aDB8A42689b924143",
+    894710606: "0x10bB478E563936D43d83F09eE59C4B9bdaD04B71",
+    97: "0x4803c6968397A39d975a58450161bBf42D9C15d0",
+    // 5: "0xbB2cF54C82a6d4137cD88eAF8ad1805D77b3D060",
   },
 };
 

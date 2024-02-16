@@ -7,7 +7,6 @@ import "./interfaces/IERC20.sol";
 
 contract TokenBridge is CarrotBridgeInteractor, CarrotBridgeReceiver {
     mapping(uint256 => address) tokenMap;
-    mapping(uint256 => address) allowedSender;
 
     constructor(
         address carrotBridgeConnectorAddress
@@ -38,7 +37,6 @@ contract TokenBridge is CarrotBridgeInteractor, CarrotBridgeReceiver {
             address(connector) == _msgSender() || connector.tssAddress() == _msgSender(),
             "Permission Denied"
         );
-        require((allowedSender[sourceChainId]) != txSenderAddress, "Not allowed");
         require(tokenId == currentChainId || tokenMap[tokenId] != address(0), "Not valid chain id");
         if (tokenId == currentChainId) {
             payable(to).transfer(amount);

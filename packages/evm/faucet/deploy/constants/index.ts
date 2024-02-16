@@ -9,6 +9,6 @@ export const AMOUNTS: Record<string, Record<string, BigNumber>> = {
   zeta_athens: ZETA_TESTNET.AMOUNTS,
   neo_testnet: NEO_TESTNET.AMOUNTS,
   bnb_testnet: BNB_TESTNET.AMOUNTS,
-  eth_testnet: ETH_TESTNET.AMOUNTS,
+  eth_sepolia: ETH_TESTNET.AMOUNTS,
   polygon_testnet: POLYGON_TESTNET.AMOUNTS,
 } as const;

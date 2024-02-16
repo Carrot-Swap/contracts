@@ -28,14 +28,15 @@ const func = async function (hre: HardhatRuntimeEnvironment) {
   for (const [id, address] of Object.entries(tokenAddresses)) {
     console.log("set token", id, address);
     await contract.setToken(id, address);
+    await new Promise((resolve) => setInterval(resolve, 5000));
   }
-
   for (const [name, address] of Object.entries(BRIDGE_ADDRESSES)) {
     if (name === hre.network.name) {
       continue;
     }
     console.log("set interactor by chain", CHAIN_ID_BY_NAME[name], address);
     await contract.setInteractorByChainId(CHAIN_ID_BY_NAME[name], address);
+    await new Promise((resolve) => setInterval(resolve, 5000));
   }
   console.log(hre.network.name, "Token Bridge deployed", deployment.address);
 };

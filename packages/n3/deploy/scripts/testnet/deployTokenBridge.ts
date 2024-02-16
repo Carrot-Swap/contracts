@@ -17,7 +17,7 @@ export async function deployTokenBridge(
     currentChainId,
   ]);
   await bridge.contract.invoke("setEVMInteractorAddress", [
-    "NU7LRUDw7xoPFHiytzp7JFN2JRKq4FPbj7",
+    "NMjzPHVR1CtsgYGV6rmSsKM42avxrUA7yk",
   ]);
   await bridge.contract.invoke("putTokenId", [
     "0xef4073a0f2b305a38ec4050e4d3d28bc40ea63f5",
