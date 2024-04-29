@@ -7,12 +7,12 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract CarrotNFT is ERC1155, Ownable {
 
     constructor(
-        string uri
-    ) public ERC1155(uri) Ownable(msg.sender) {}
+        string memory _uri
+    ) public ERC1155(_uri) Ownable() {}
 
     function mintBatch(uint256 id, address[] memory accounts) external onlyOwner {
         for(uint256 i = 0; i < accounts.length; i++) {
-            _mint(accounts[i], id, 1, bytes(0));
+            _mint(accounts[i], id, 1, "");
         }
         emit MintBatch(accounts, id);
     }
@@ -22,11 +22,11 @@ contract CarrotNFT is ERC1155, Ownable {
     }
 
     function putUri(string memory uri) external onlyOwner {
-        putUri(uri);
+        _setURI(uri);
     }
 
-    event MintBatch {
-        address[] accounts;
-        uint256 tokenId;
-    }
+    event MintBatch (
+        address[] accounts,
+        uint256 tokenId
+    );
 }

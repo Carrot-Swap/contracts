@@ -10,6 +10,19 @@ import { hardhatBaseConfig } from "../../../hardhat.config.base";
 
 const config: HardhatUserConfig = {
   ...hardhatBaseConfig,
+  solidity: {
+    compilers: [
+      {
+        version: "0.7.6",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+    ],
+  },
 };
 
 export default config;
