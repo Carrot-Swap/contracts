@@ -8,6 +8,7 @@ import './UniswapV2Pair.sol';
 contract UniswapV2Factory is IUniswapV2Factory {
     address public override feeTo;
     address public override feeToSetter;
+    address public feeGovernance;
     address public override migrator;
 
     mapping(address => mapping(address => address)) public override getPair;
@@ -15,8 +16,9 @@ contract UniswapV2Factory is IUniswapV2Factory {
 
     event PairCreated(address indexed token0, address indexed token1, address pair, uint);
 
-    constructor(address _feeToSetter) public {
+    constructor(address _feeToSetter, address _feeGovernance) public {
         feeToSetter = _feeToSetter;
+        feeGovernance = _feeGovernance;
     }
 
     function allPairsLength() external override view returns (uint) {
@@ -37,7 +39,7 @@ contract UniswapV2Factory is IUniswapV2Factory {
         assembly {
             pair := create2(0, add(bytecode, 32), mload(bytecode), salt)
         }
-        UniswapV2Pair(pair).initialize(token0, token1);
+        UniswapV2Pair(pair).initialize(token0, token1, feeGovernance);
         getPair[token0][token1] = pair;
         getPair[token1][token0] = pair; // populate mapping in the reverse direction
         allPairs.push(pair);
