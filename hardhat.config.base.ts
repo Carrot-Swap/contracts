@@ -16,12 +16,28 @@ export const hardhatBaseConfig = {
     ],
   },
   networks: {
-    neo_testnet: {
-      url: "https://evm.ngd.network:32331",
-      chainId: 2970385,
+    neox: {
+      url: "https://mainnet-1.rpc.banelabs.org",
+      chainId: 47763,
       accounts: require("./secrets.json").privateKey,
-      gas: 30000001,
+      tags: ["mainnet"],
       saveDeployments: true,
+      gasPrice: 40000000000,
+    },
+    neox_t4: {
+      url: "https://neoxt4seed1.ngd.network",
+      chainId: 12227332,
+      accounts: require("./secrets.json").privateKey,
+      tags: ["mainnet"],
+      saveDeployments: true,
+      gasPrice: 40000000000,
+    },
+    neo_testnet: {
+      url: `https://neoxseed1.ngd.network/`,
+      chainId: 12227331,
+      accounts: require("./secrets.json").privateKey,
+      saveDeployments: true,
+      gasPrice: 10000000000,
     },
     zeta_athens: {
       url: "https://zetachain-athens-evm.blockpi.network/v1/rpc/public",

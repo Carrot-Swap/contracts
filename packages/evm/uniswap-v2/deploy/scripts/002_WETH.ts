@@ -10,6 +10,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   console.log(`WETH is deployed(${WETH.address})`);
 };
 
-func.tags = ["mainnet", "testnet"];
+func.tags = ["mainnet", "testnet", "WETH9"];
 
 export default func;

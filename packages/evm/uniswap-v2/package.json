@@ -4,9 +4,10 @@
   "license": "MIT",
   "scripts": {
     "compile": "yarn hardhat compile",
+    "deploy:neox": "yarn hardhat deploy --tags mainnet --network neox",
     "deploy:eth:testnet": "yarn hardhat deploy --tags testnet --network eth_sepolia",
     "deploy:mode:testnet": "yarn hardhat deploy --tags testnet --network mode_testnet",
-    "deploy:neo:testnet": "yarn hardhat deploy --tags testnet --network neo_testnet",
+    "deploy:neo:testnet": "yarn hardhat deploy --tags testnet --network neox_t4",
     "deploy:zeta:testnet": "yarn hardhat deploy --tags testnet --network zeta_athens"
   },
   "devDependencies": {
